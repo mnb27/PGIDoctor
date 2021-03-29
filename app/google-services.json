@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "941092939559",
+    "project_id": "pgidoctor-78e8b",
+    "storage_bucket": "pgidoctor-78e8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941092939559:android:77ad96be24a46a1ef96b02",
+        "android_client_info": {
+          "package_name": "com.example.pgidoctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "941092939559-l92rtc8drj81r3hos7qnct9ul7vkts0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbYLNxdl7953UlOA15RkA_K_1qpx_yBWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "941092939559-l92rtc8drj81r3hos7qnct9ul7vkts0i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
