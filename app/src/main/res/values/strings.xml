@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PGIDoctor</string>
+    <string name="new_user_click_here_to_register">New User?. Click Here To Register</string>
+    <string name="already_an_user_click_here_to_login">Already an User?. Click here to Login</string>
 </resources>
