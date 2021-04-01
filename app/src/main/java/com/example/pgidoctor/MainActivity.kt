@@ -22,10 +22,10 @@ class MainActivity : AppCompatActivity() {
         val logout: ImageView = findViewById(R.id.logout)
 
 
-//        classBooking.setOnClickListener {
-//            val intent = Intent(this,ClassRoomBookingActivity::class.java)
-//            startActivity(intent)
-//        }
+        classBooking.setOnClickListener {
+            val intent = Intent(this,CollectDataActivity::class.java)
+            startActivity(intent)
+        }
 
         logout.setOnClickListener{
             auth.signOut()

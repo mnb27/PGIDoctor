@@ -48,6 +48,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-firestore:22.1.1'
+    implementation 'com.google.firebase:firebase-database-ktx'
+
+    // for profile photo view
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.google.firebase:firebase-storage:19.2.2'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
@@ -55,4 +60,8 @@ dependencies {
 
     // card view
     implementation "androidx.cardview:cardview:1.0.0"
+
+
+    // picaso image loader
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }
