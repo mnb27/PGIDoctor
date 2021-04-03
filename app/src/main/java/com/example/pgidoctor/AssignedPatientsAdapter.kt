@@ -1,6 +1,7 @@
 package com.example.pgidoctor
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,15 +16,27 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
 
     class DetailsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var nameText: TextView = itemView.findViewById(R.id.nameOfTask)
-        var villageText: TextView = itemView.findViewById(R.id.numberOfTask)
+        var date: TextView = itemView.findViewById(R.id.date)
+        var hospital: TextView = itemView.findViewById(R.id.hospital)
+        var unit: TextView = itemView.findViewById(R.id.unit)
         var viewMore: TextView = itemView.findViewById(R.id.viewMore)
 
     }
     override fun onBindViewHolder(holder: AssignedPatientsAdapter.DetailsViewHolder, position: Int) {
         var details = detailsList[position]
-        holder.nameText.text = details.name
-        //holder.villageText.text = details.village
+        holder.nameText.text = "Name: " + details.name
+        holder.date.text = "Date Of Collection: " + details.date
+        holder.hospital.text = "Hospital: " + details.hospitalText
+        holder.unit.text = "Unit: " + details.unitText
+
+
         holder.viewMore.text = "View More"
+
+        holder.viewMore.setOnClickListener {
+            val intent = Intent(context,ViewMoreActivity::class.java)
+            intent.putExtra("previousDetails",details)
+            context.startActivity(intent)
+        }
 
 
 
