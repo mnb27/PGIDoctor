@@ -15,7 +15,6 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -24,18 +23,12 @@ import androidx.core.content.FileProvider
 
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.jar.Manifest
-
-import kotlin.concurrent.schedule
 
 class CollectDataActivity : AppCompatActivity() {
 
@@ -153,6 +146,9 @@ class CollectDataActivity : AppCompatActivity() {
         val mobile: TextInputLayout = findViewById(R.id.five)
         val age: TextInputLayout = findViewById(R.id.six)
         val gender: TextInputLayout = findViewById(R.id.seven)
+        val hospital: TextInputLayout = findViewById(R.id.eight)
+        val unit: TextInputLayout = findViewById(R.id.nine)
+
 
         val saveButton: Button = findViewById(R.id.saveButton)
 
@@ -167,10 +163,13 @@ class CollectDataActivity : AppCompatActivity() {
             var mobileText = mobile.editText?.text.toString()
             var ageText = age.editText?.text.toString()
             var genderText = gender.editText?.text.toString()
+            var hospitalText = hospital.editText?.text.toString()
+            var unitText = unit.editText?.text.toString()
+
 
             Log.d("TAG", "File url 2: $profileImageUrlText")
 
-            val patientDetails = PatientDetails(nameText, fathernameText, datecollectedText, crnoText, mobileText, ageText, genderText,profileImageUrlText)
+            val patientDetails = PatientDetails(nameText, fathernameText, datecollectedText, crnoText, mobileText, ageText, genderText,profileImageUrlText,hospitalText,unitText)
             val firestore = FirebaseFirestore.getInstance().collection("PatientDetails")
 
             firestore.document().set(patientDetails)
