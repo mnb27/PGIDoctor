@@ -86,26 +86,26 @@
                 android:layout_width="match_parent"
                 android:id="@+id/approve"
                 android:text="Approve"
+                android:textColor="#fcffff"
+                android:textStyle="bold"
                 android:background="#4CAF50"
                 app:layout_constraintTop_toBottomOf="@id/unit"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginRight="200dp"
                 >
-
-
             </android.widget.Button>
 
             <android.widget.Button
                 android:id="@+id/disapprove"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DisApprove"
+                android:text="Decline"
+                android:textColor="#fcffff"
+                android:textStyle="bold"
                 android:background="#E30909"
                 android:layout_marginStart="204dp"
                 app:layout_constraintStart_toEndOf="@+id/approve"
                 app:layout_constraintTop_toBottomOf="@id/unit">
-
-
             </android.widget.Button>
 
 

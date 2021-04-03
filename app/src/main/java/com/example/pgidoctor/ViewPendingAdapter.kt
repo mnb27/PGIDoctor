@@ -37,11 +37,11 @@ class ViewPendingAdapter(var context: Context, var detailsList: MutableList<Pend
     }
     override fun onBindViewHolder(holder: ViewPendingAdapter.DetailsViewHolder, position: Int) {
         var details = detailsList[position]
-        holder.name.text = details.name
-        holder.email.text = details.email
-        holder.hospital.text = details.hospitalName
-        holder.unit.text = details.unitName
-        holder.type.text = details.category
+        holder.name.text = "Name: " + details.name
+        holder.email.text = "Email: " + details.email
+        holder.hospital.text = "Hospital: " + details.hospitalName
+        holder.unit.text = "Unit: " + details.unitName
+        holder.type.text = "Identity: " + details.category
 
         holder.approve.setOnClickListener {
             var Docref = FirebaseFirestore.getInstance().collection("PendingList").document(details.mobile);
