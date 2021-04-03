@@ -3,6 +3,7 @@ package com.example.pgidoctor
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import com.google.firebase.auth.FirebaseAuth
@@ -22,6 +23,7 @@ class DoctorPortalActivity : AppCompatActivity() {
         val logout: ImageView = findViewById(R.id.logout)
         val collectData: CardView = findViewById(R.id.collectData)
         val viewPatient: CardView = findViewById(R.id.viewPatients)
+        val editProfile: Button = findViewById(R.id.editProfileB)
 
         logout.setOnClickListener {
             auth.signOut()
@@ -35,6 +37,11 @@ class DoctorPortalActivity : AppCompatActivity() {
 
         viewPatient.setOnClickListener {
             startActivity(Intent(this,AssignedPatients::class.java))
+        }
+
+        editProfile.setOnClickListener {
+            val intent = Intent(this,ProfileActivity::class.java)
+            startActivity(intent)
         }
 
 

@@ -37,7 +37,7 @@
                 app:civ_border_color="#3192F4"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/round_button"
-                android:src="@drawable/lady" />
+                android:src="@drawable/ic_patient" />
 
             <Button
                 android:id="@+id/btCapturePhoto"

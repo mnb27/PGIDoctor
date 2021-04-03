@@ -10,4 +10,16 @@
     <string name="village">Village <font color='#FF0000'>*</font></string>
     <string name="mobile">Mobile No. <font color='#FF0000'>*</font></string>
 
+    <!--Profile activity-->
+    <string name="full_name">John Doe</string>
+    <string name="back_to_home">Back to\nHome</string>
+    <string name="username_title">Name</string>
+    <string name="username">doe007#</string>
+    <string name="phone_title">Phone</string>
+    <string name="phone">+000 00 000 000</string>
+    <string name="address_title">Address</string>
+    <string name="address">City, Street</string>
+    <string name="email_title">Email</string>
+    <string name="email">goldenperfecttv@gmail.com</string>
+
 </resources>
