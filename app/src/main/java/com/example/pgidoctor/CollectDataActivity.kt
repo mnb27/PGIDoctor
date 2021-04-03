@@ -176,7 +176,7 @@ class CollectDataActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Successfully Saved", Toast.LENGTH_LONG).show()
-                        val intent = Intent(this, MainActivity::class.java)
+                        val intent = Intent(this, DoctorPortalActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
