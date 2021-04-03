@@ -18,7 +18,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PGIDoctor">
-        <activity android:name=".AssignedPatientsAdapter"></activity>
+        <activity android:name=".OpenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CompounderPortalActivity" />
+        <activity android:name=".DoctorPortalActivity" />
+        <activity android:name=".ViewPendingActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".AdminActivity" />
         <activity android:name=".AssignedPatients" />
         <activity android:name=".CollectDataActivity" />
 
@@ -33,14 +44,10 @@
         </provider>
 
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".MainActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

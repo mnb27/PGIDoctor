@@ -34,21 +34,35 @@ class AssignedPatients : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        fireStore.collection("PatientDetails").whereEqualTo("hospitalText",FirebaseAuth.getInstance().currentUser?.hospital).get()
-            .addOnSuccessListener { documents->
-                for(document in documents) {
-                    list.add(document.toObject(PatientDetails::class.java))
+        var unit = ""
+        var hospital = ""
+
+        auth.currentUser?.uid?.let {
+            fireStore.collection("Users").document(it).get()
+                .addOnSuccessListener {
+                    if(it.exists()){
+                        hospital = it.getString("hospital").toString()
+                        unit = it.getString("unit").toString()
+
+                        fireStore.collection("PatientDetails").whereEqualTo("hospitalText",hospital).whereEqualTo("unitText",unit).get()
+                            .addOnSuccessListener { documents->
+                                for(document in documents) {
+                                    list.add(document.toObject(PatientDetails::class.java))
+                                }
+                                (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+                                if(list.isEmpty()) {
+                                    Toast.makeText(this,"No pending requests",Toast.LENGTH_LONG).show()
+                                    val intent = Intent(this, MainActivity::class.java)
+                                    startActivity(intent)
+                                }
+                            }
+                            .addOnFailureListener{
+                                Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
+                            }
+
+                    }
                 }
-                (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
-                if(list.isEmpty()) {
-                    Toast.makeText(this,"No pending requests",Toast.LENGTH_LONG).show()
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                }
-            }
-            .addOnFailureListener{
-                Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
-            }
+        }
 
 
     }

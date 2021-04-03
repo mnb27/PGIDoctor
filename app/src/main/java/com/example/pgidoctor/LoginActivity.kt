@@ -24,14 +24,8 @@ class LoginActivity : AppCompatActivity() {
 
         val auth =FirebaseAuth.getInstance()
 
-        if(auth.currentUser != null){
-            val intent = Intent(this,MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
         goToRegister.setOnClickListener {
-            startActivity(Intent(this,SignUpActivity::class.java))
+            startActivity(Intent(this,RegisterActivity::class.java))
         }
 
         val emailText: TextInputLayout = findViewById(R.id.email_text)
@@ -70,9 +64,35 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
 
                     if(task.isSuccessful) {
-                        startActivity(Intent(this,MainActivity::class.java))
-                        finish()
-
+                        if(auth.currentUser?.email == "admin@gmail.com") {
+                            startActivity(Intent(this, AdminActivity::class.java))
+                            finish()
+                        }
+                        else {
+                            val fireStore = FirebaseFirestore.getInstance()
+                            var type = ""
+                            fireStore.collection("Users").document(auth.currentUser.uid).get()
+                                .addOnSuccessListener {
+                                    type = it.getString("type").toString()
+                                    if (type == "Doctor") {
+                                        startActivity(
+                                            Intent(
+                                                this,
+                                                DoctorPortalActivity::class.java
+                                            )
+                                        )
+                                        finish()
+                                    } else {
+                                        startActivity(
+                                            Intent(
+                                                this,
+                                                CompounderPortalActivity::class.java
+                                            )
+                                        )
+                                        finish()
+                                    }
+                                }
+                        }
                     }
                     else {
                         Toast.makeText(this, "Something went wrong. Please try again.", Toast.LENGTH_LONG).show()
