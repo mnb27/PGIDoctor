@@ -12,12 +12,23 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="#3192F4"
+            android:padding="5dp"
+            android:text="Register User"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/one"
-            android:hint="Name"
+            android:hint="@string/name"
             android:layout_margin="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -29,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/two"
-            android:hint="Email"
+            android:hint="@string/useremail"
             android:layout_margin="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -41,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/three"
-            android:hint="Hospital"
+            android:hint="@string/hospital"
             android:layout_margin="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -53,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/four"
-            android:hint="Unit"
+            android:hint="@string/unit"
             android:layout_margin="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -169,7 +180,8 @@
 
         <Button
             android:id="@+id/saveButton"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:text="Apply"
             android:textSize="24sp"

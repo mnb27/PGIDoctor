@@ -16,6 +16,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -145,7 +146,7 @@ class CollectDataActivity : AppCompatActivity() {
         val crno: TextInputLayout = findViewById(R.id.four)
         val mobile: TextInputLayout = findViewById(R.id.five)
         val age: TextInputLayout = findViewById(R.id.six)
-        val gender: TextInputLayout = findViewById(R.id.seven)
+        var male: RadioButton = findViewById(R.id.male)
         val hospital: TextInputLayout = findViewById(R.id.eight)
         val unit: TextInputLayout = findViewById(R.id.nine)
 
@@ -162,9 +163,40 @@ class CollectDataActivity : AppCompatActivity() {
             var crnoText = crno.editText?.text.toString()
             var mobileText = mobile.editText?.text.toString()
             var ageText = age.editText?.text.toString()
-            var genderText = gender.editText?.text.toString()
+
             var hospitalText = hospital.editText?.text.toString()
             var unitText = unit.editText?.text.toString()
+
+            var gender:String
+            if(male.isChecked) gender="male"
+            else gender="female"
+
+            var genderText = gender
+
+            if (nameText.isEmpty()) {
+                name.error = "Required Field"
+                return@setOnClickListener
+            }
+
+            if (datecollectedText.isEmpty()) {
+                fathername.error = "Required Field"
+                return@setOnClickListener
+            }
+
+            if (mobileText.isEmpty()) {
+                mobile.error = "Required Field"
+                return@setOnClickListener
+            }
+
+            if (hospitalText.isEmpty()) {
+                hospital.error = "Required Field"
+                return@setOnClickListener
+            }
+
+            if (unitText.isEmpty()) {
+                unit.error = "Required Field"
+                return@setOnClickListener
+            }
 
 
             Log.d("TAG", "File url 2: $profileImageUrlText")

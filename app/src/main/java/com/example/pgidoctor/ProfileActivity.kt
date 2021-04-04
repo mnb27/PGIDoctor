@@ -61,6 +61,7 @@ class ProfileActivity : AppCompatActivity() {
         var name1 = findViewById<TextView>(R.id.person_name1);
         var email = findViewById<TextView>(R.id.person_email);
         var mobile = findViewById<TextView>(R.id.person_mobile);
+        var addr = findViewById<TextView>(R.id.person_address);
 
         email.setText(user_email)
 
@@ -71,6 +72,7 @@ class ProfileActivity : AppCompatActivity() {
                         name.setText(""+document.data.getValue("name"));
                         name1.setText("@"+document.data.getValue("name"));
                         mobile.setText("+91 "+document.data.getValue("mobile"));
+                        addr.setText("Hospital: " + document.data.getValue("hospital") + ", Unit: " + document.data.getValue("unit"));
                     }
                 }
             }

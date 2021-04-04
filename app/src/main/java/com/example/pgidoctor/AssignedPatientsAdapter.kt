@@ -22,14 +22,14 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
         var date: TextView = itemView.findViewById(R.id.date)
         var hospital: TextView = itemView.findViewById(R.id.hospital)
         var unit: TextView = itemView.findViewById(R.id.unit)
-        var viewMore: TextView = itemView.findViewById(R.id.viewMore)
+        var viewMore: Button = itemView.findViewById(R.id.viewMore)
         var profileImage: CircleImageView = itemView.findViewById(R.id.imageoftask)
 
     }
     override fun onBindViewHolder(holder: AssignedPatientsAdapter.DetailsViewHolder, position: Int) {
         var details = detailsList[position]
         holder.nameText.text = "Name: " + details.name
-        holder.date.text = "Date Of Collection: " + details.date
+        holder.date.text = "Collection Date: " + details.date
         holder.hospital.text = "Hospital: " + details.hospitalText
         holder.unit.text = "Unit: " + details.unitText
 

@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="Name"
+                android:textStyle="bold"
                 android:textColor="#ffffff"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"

@@ -72,6 +72,11 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if (unitNameText.isEmpty()) {
+                hospitalName.error = "Required Field"
+                return@setOnClickListener
+            }
+
             if (mobileText.isEmpty()) {
                 mobile.error = "Required Field"
                 return@setOnClickListener

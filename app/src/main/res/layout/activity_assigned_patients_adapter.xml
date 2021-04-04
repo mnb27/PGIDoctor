@@ -41,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="Name"
+                android:textStyle="bold"
                 android:textColor="#ffffff"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,9 +85,9 @@
                 app:layout_constraintTop_toBottomOf="@id/hospital" />
 
 
-            <TextView
+            <Button
                 android:id="@+id/viewMore"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="View More"

@@ -4,16 +4,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#3192F4"
+    android:background="#FFFFFF"
     tools:context=".LoginActivity">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/triangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/trianglee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="155dp"
         android:layout_marginTop="54dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:src="@drawable/ic_key"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="140dp" />
@@ -35,16 +52,16 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginTop="200dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/edit_text_shape"
+            android:drawableStart="@drawable/ic_mail"
+            android:drawablePadding="10dp"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:padding="15dp"
             android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:background="@drawable/edit_text_shape"
-            android:drawableStart="@drawable/person_icon"
-            android:drawablePadding="10dp" />
+            android:textColorHint="@android:color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,12 +99,13 @@
 
     <android.widget.Button
         android:id="@+id/login_button"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:background="@drawable/button_shape"
-        android:padding="15dp"
         android:text="Login"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
@@ -111,8 +129,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/new_user_click_here_to_register"
-        android:layout_marginBottom="20dp"
-        android:textColor="@android:color/black"
+        android:layout_marginBottom="30dp"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

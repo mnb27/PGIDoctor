@@ -152,41 +152,39 @@
 
         </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_marginTop="14dp">-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp">
 
-<!--            <ImageView-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:padding="4dp"-->
-<!--                android:layout_marginEnd="10dp"-->
-<!--                android:src="@drawable/ic_address"/>-->
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="4dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_address"/>
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical">-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="@string/address_title"-->
-<!--                    style="@style/TextBlackTitle"/>-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hospital_title"
+                    style="@style/TextBlackTitle"/>
 
-<!--                <TextView-->
-<!--                    android:id="@+id/person_address"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="@string/address"-->
-<!--                    style="@style/TextDescription"/>-->
+                <TextView
+                    android:id="@+id/person_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hospital_desc"
+                    style="@style/TextDescription"/>
 
-<!--            </LinearLayout>-->
-
-
-<!--        </LinearLayout>-->
+            </LinearLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/edit_profile"

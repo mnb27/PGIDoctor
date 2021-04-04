@@ -3,6 +3,13 @@
     <string name="new_user_click_here_to_register">New User?. Click Here To Register</string>
     <string name="already_an_user_click_here_to_login">Already an User?. Click here to Login</string>
 
+    <!--Register form-->
+    <string name="name">Full Name <font color='#FF0000'>*</font></string>
+    <string name="useremail">Email ID <font color='#FF0000'>*</font></string>
+    <string name="hospital">Hospital <font color='#FF0000'>*</font></string>
+    <string name="unit">Unit <font color='#FF0000'>*</font></string>
+    <string name="dob">Date of birth <font color='#FF0000'>*</font></string>
+
     <!--collect data activity-->
     <string name="patient_name">Patient Name <font color='#FF0000'>*</font></string>
     <string name="doc">Date of collection <font color='#FF0000'>*</font></string>
@@ -17,8 +24,8 @@
     <string name="username">doe007#</string>
     <string name="phone_title">Phone</string>
     <string name="phone">+000 00 000 000</string>
-    <string name="address_title">Address</string>
-    <string name="address">City, Street</string>
+    <string name="hospital_title">Facility</string>
+    <string name="hospital_desc">Hospital, Unit</string>
     <string name="email_title">Email</string>
     <string name="email">goldenperfecttv@gmail.com</string>
 
