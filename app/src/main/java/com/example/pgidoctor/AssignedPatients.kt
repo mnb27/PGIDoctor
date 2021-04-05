@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import android.content.Intent
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -39,7 +40,7 @@ class AssignedPatients : AppCompatActivity() {
 
         auth.currentUser?.uid?.let {
             fireStore.collection("Users").document(it).get()
-                .addOnSuccessListener {
+                .addOnSuccessListener { it ->
                     if(it.exists()){
                         hospital = it.getString("hospital").toString()
                         unit = it.getString("unit").toString()
@@ -49,6 +50,7 @@ class AssignedPatients : AppCompatActivity() {
                                 for(document in documents) {
                                     list.add(document.toObject(PatientDetails::class.java))
                                 }
+                                list.sortBy { det->det.name }
                                 (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
                                 if(list.isEmpty()) {
                                     Toast.makeText(this,"No pending requests",Toast.LENGTH_LONG).show()
