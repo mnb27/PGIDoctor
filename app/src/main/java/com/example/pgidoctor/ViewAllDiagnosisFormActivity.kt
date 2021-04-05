@@ -29,6 +29,8 @@ class ViewAllDiagnosisFormActivity : AppCompatActivity() {
             intent.putExtra("previousDetails",previousDetails)
             startActivity(intent)
         }
+        val text: TextView = findViewById(R.id.textView4)
+        text.text = "Diagnosis Forms For " + previousDetails?.name
 
         val id = previousDetails?.id
         val fireStore = FirebaseFirestore.getInstance()
