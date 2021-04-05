@@ -24,6 +24,7 @@ class CompounderPortalActivity : AppCompatActivity() {
         val collectData: CardView = findViewById(R.id.collectData)
         val viewPatient: CardView = findViewById(R.id.viewPatients)
         val editProfile: Button = findViewById(R.id.editProfileB)
+        val searchPatient: CardView = findViewById(R.id.search)
 
         logout.setOnClickListener {
             auth.signOut()
@@ -44,6 +45,9 @@ class CompounderPortalActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        searchPatient.setOnClickListener {
+            startActivity(Intent(this,SearchByNameActivity::class.java))
+        }
 
     }
 }
