@@ -54,7 +54,7 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
         }
 
         holder.collectdiagnosisdata.setOnClickListener {
-            val intent = Intent(context,PatientDiagnosisFormActivity::class.java)
+            val intent = Intent(context,ViewAllDiagnosisFormActivity::class.java)
             intent.putExtra("previousDetails",details)
             context.startActivity(intent)
         }

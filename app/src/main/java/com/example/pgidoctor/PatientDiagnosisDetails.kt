@@ -6,6 +6,7 @@ data class PatientDiagnosisDetails(
     val name: String = "",
     var hospitalText: String="",
     var unitText: String = "",
+    var date: String = "",
     var weight: String = "",
     var height: String = "",
     var smoking: String = "",

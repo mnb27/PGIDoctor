@@ -201,10 +201,14 @@ class CollectDataActivity : AppCompatActivity() {
 
             Log.d("TAG", "File url 2: $profileImageUrlText")
 
-            val patientDetails = PatientDetails(nameText, fathernameText, datecollectedText, crnoText, mobileText, ageText, genderText,profileImageUrlText,hospitalText,unitText)
+            var id = SimpleDateFormat("ddMMyyyyhh:mm:ss")
+            val id1 = id.format(Date())
+
+            val patientDetails = PatientDetails(nameText, fathernameText, datecollectedText, crnoText, mobileText, ageText, genderText,profileImageUrlText,hospitalText,unitText,id1)
             val firestore = FirebaseFirestore.getInstance().collection("PatientDetails")
 
-            firestore.document().set(patientDetails)
+
+            firestore.document(id1).set(patientDetails)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Successfully Saved", Toast.LENGTH_LONG).show()

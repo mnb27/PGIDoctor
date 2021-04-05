@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".PatientDiagnosisFormActivity">
+    tools:context=".ViewMoreDetailActivity">
 
 
     <LinearLayout
@@ -55,37 +55,20 @@
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/date"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/date"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:hint="Date Of Collection">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left|center_vertical"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:gravity="left|center_vertical"
-                android:hint="@string/doc"
-                android:singleLine="true">
+                android:clickable="false"
+                android:focusable="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:id="@+id/pickDateBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="58dp"
-                android:layout_margin="12dp"
-                android:text="Pick Date" />
-        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/two"
@@ -197,15 +180,6 @@
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="50dp"
-            android:text="Save Data"
-            android:textSize="24sp" />
 
     </LinearLayout>
 

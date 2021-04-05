@@ -1,5 +1,6 @@
 package com.example.pgidoctor
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 
 class PatientDiagnosisFormActivity : AppCompatActivity() {
@@ -30,24 +32,29 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
         hospital.editText?.setText(previousDetails?.hospitalText)
         unit.editText?.setText(previousDetails?.unitText)
 
+        val id = previousDetails?.id
+
+        val mPickTimeBtn = findViewById<Button>(R.id.pickDateBtn) // date
+
+        val date: TextInputLayout = findViewById(R.id.date)
+
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        mPickTimeBtn.setOnClickListener {
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                // Display Selected date in TextView
+                date.getEditText()?.setText("" + dayOfMonth + " / " + month + " / " + year)
+            }, year, month, day)
+            dpd.show()
+        }
+
 
         val firestore = FirebaseFirestore.getInstance()
-        var c = 0
 
-        firestore.collection("PatientDiagnosisDetails").whereEqualTo("name",previousDetails?.name)
-            .whereEqualTo("unitText", previousDetails?.unitText)
-            .get()
-            .addOnSuccessListener { documents->
-                for(document in documents) {
-                    c=1
-                }
-                if(c==1) {
-                    Toast.makeText(this,"Data Already taken",Toast.LENGTH_LONG).show()
-                    val intent = Intent(this, OpenActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                else{
+
                     val weight: TextInputLayout = findViewById(R.id.two)
                     val height: TextInputLayout = findViewById(R.id.three)
                     val smoking: TextInputLayout = findViewById(R.id.four)
@@ -67,6 +74,7 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
                         var nameText = previousDetails?.name.toString()
                         var hospitalText = previousDetails?.hospitalText.toString()
                         var unitText = previousDetails?.unitText.toString()
+                        val dateText = date.editText?.text.toString()
                         var weightText = weight.editText?.text.toString()
                         var heightText = height.editText?.text.toString()
                         var smokingText = smoking.editText?.text.toString()
@@ -81,6 +89,7 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
                             nameText,
                             hospitalText,
                             unitText,
+                            dateText,
                             weightText,
                             heightText,
                             smokingText,
@@ -91,32 +100,25 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
                             mriText,
                             psmapetText
                         )
-                        val firestore = FirebaseFirestore.getInstance().collection("PatientDiagnosisDetails")
+                        val firestore = FirebaseFirestore.getInstance().collection("PatientDetails")
 
-                        firestore.document().set(patientDetails)
-                            .addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-                                    Toast.makeText(this, "Successfully Saved", Toast.LENGTH_LONG).show()
-                                    val intent = Intent(this, OpenActivity::class.java)
-                                    startActivity(intent)
-                                    finish()
-                                } else {
-                                    Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+
+                        if (id != null) {
+                            firestore.document(id).collection("DiagnosisForm").document().set(patientDetails)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        Toast.makeText(this, "Successfully Saved", Toast.LENGTH_LONG).show()
+                                        val intent = Intent(this, AssignedPatients::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    } else {
+                                        Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+                                    }
                                 }
-                            }
+                        }
 
 
                     }
-
-                }
-
-            }
-            .addOnFailureListener {
-                val intent = Intent(this, OpenActivity::class.java)
-
-                startActivity(intent)
-                Log.e("No", "Error")
-            }
 
     }
 

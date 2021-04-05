@@ -12,5 +12,6 @@ data class PatientDetails(
     val gender: String = "",
     var profileImageUrl: String = "",
     var hospitalText: String="",
-    var unitText: String = ""
+    var unitText: String = "",
+    var id: String = ""
 ): Serializable

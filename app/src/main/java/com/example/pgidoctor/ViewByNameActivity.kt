@@ -15,7 +15,7 @@ import java.util.*
 
 class ViewByNameActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
-    lateinit var viewByNameAdapter: ViewByNameAdapter
+    lateinit var viewByNameAdapter: AssignedPatientsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,7 @@ class ViewByNameActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView1)
         val text: TextView = findViewById(R.id.text)
         text.text = "Patient's Name Matching with $name"
-        viewByNameAdapter = ViewByNameAdapter(this,list)
+        viewByNameAdapter = AssignedPatientsAdapter(this,list)
 
 
         recyclerView.adapter = viewByNameAdapter
@@ -55,7 +55,7 @@ class ViewByNameActivity : AppCompatActivity() {
                             list.add(det)
                         }
                     }
-                    (recyclerView.adapter as ViewByNameAdapter).notifyDataSetChanged()
+                    (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
                     if(list.isEmpty()){
                         Toast.makeText(applicationContext,"No Such Patient Exists",Toast.LENGTH_LONG).show()
                         startActivity(Intent(applicationContext,SearchByNameActivity::class.java))
