@@ -23,6 +23,7 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
         var hospital: TextView = itemView.findViewById(R.id.hospital)
         var unit: TextView = itemView.findViewById(R.id.unit)
         var viewMore: Button = itemView.findViewById(R.id.viewMore)
+        var collectdiagnosisdata: Button = itemView.findViewById(R.id.collectdiagnosisdata)
         var profileImage: CircleImageView = itemView.findViewById(R.id.imageoftask)
 
     }
@@ -52,7 +53,11 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
             context.startActivity(intent)
         }
 
-
+        holder.collectdiagnosisdata.setOnClickListener {
+            val intent = Intent(context,PatientDiagnosisFormActivity::class.java)
+            intent.putExtra("previousDetails",details)
+            context.startActivity(intent)
+        }
 
     }
 

@@ -12,6 +12,7 @@
         <activity android:name=".ViewByNameActivity"></activity>
         <activity android:name=".SearchByNameActivity" />
         <activity android:name=".ProfileActivity" />
+        <activity android:name=".PatientDiagnosisFormActivity" />
         <activity android:name=".ViewMoreActivity" />
         <activity android:name=".OpenActivity">
             <intent-filter>

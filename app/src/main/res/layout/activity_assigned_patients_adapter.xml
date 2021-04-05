@@ -31,7 +31,6 @@
                 app:civ_border_width="4dp"
                 app:civ_border_color="#ffffff"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintHorizontal_bias="0.805"
                 app:layout_constraintStart_toEndOf="@+id/name_text"
                 tools:layout_editor_absoluteY="16dp" />
@@ -85,20 +84,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hospital" />
 
-
-            <Button
+            <android.widget.Button
                 android:id="@+id/viewMore"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="View More"
-                android:textColor="#ffffff"
                 android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/date"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/date" />
+                android:layout_marginRight="200dp">
+            </android.widget.Button>
 
-
-
+            <android.widget.Button
+                android:id="@+id/collectdiagnosisdata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Collect"
+                android:textColor="#fcffff"
+                android:textStyle="bold"
+                android:background="#4CAF50"
+                android:layout_marginStart="204dp"
+                app:layout_constraintStart_toEndOf="@+id/viewMore"
+                app:layout_constraintTop_toBottomOf="@id/date">
+            </android.widget.Button>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

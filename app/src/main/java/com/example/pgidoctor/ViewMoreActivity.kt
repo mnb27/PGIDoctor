@@ -32,6 +32,7 @@ class ViewMoreActivity : AppCompatActivity() {
         hospital.editText?.setText(previousDetails?.hospitalText)
         unit.editText?.setText(previousDetails?.unitText)
 
+        /*
         name.isEnabled = false
         date.isEnabled = false
         age.isEnabled = false
@@ -41,5 +42,6 @@ class ViewMoreActivity : AppCompatActivity() {
         gender.isEnabled = false
         hospital.isEnabled = false
         unit.isEnabled = false
+         */
     }
 }
