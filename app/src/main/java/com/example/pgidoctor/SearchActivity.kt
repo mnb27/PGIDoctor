@@ -37,6 +37,9 @@ class SearchActivity : AppCompatActivity() {
         search = findViewById(R.id.searchButton)
         val searchmenu: ImageButton = findViewById(R.id.sortButton)
         nameT = findViewById(R.id.name)
+        nameT.hint = "Please Select from PopUp to Search"
+        nameT.isEnabled = false
+
 
         searchmenu.setOnClickListener{
             showPopup(searchmenu)
@@ -97,6 +100,7 @@ class SearchActivity : AppCompatActivity() {
             when (item!!.itemId) {
                 R.id.header1 -> {
                     nameT.hint = "Enter Name to Search"
+                    nameT.isEnabled = true
                     search.setOnClickListener {
                         list1.clear()
                         var nameentered = nameT.editText?.text.toString()
@@ -112,6 +116,7 @@ class SearchActivity : AppCompatActivity() {
                 }
                 R.id.header2 -> {
                     nameT.hint = "Enter Date to Search"
+                    nameT.isEnabled = true
                     search.setOnClickListener {
                         list1.clear()
                         var nameentered = nameT.editText?.text.toString()
