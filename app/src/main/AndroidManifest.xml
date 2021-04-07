@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PGIDoctor">
-        <activity android:name=".ViewMoreDetailActivity"></activity>
+        <activity android:name=".AssignedPatientsByDate"></activity>
+        <activity android:name=".ViewMoreDetailActivity" />
         <activity android:name=".ViewAllDiagnosisFormActivity" />
         <activity android:name=".ViewByNameActivity" />
         <activity android:name=".SearchByNameActivity" />

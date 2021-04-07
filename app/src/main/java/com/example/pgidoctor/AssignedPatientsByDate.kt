@@ -19,13 +19,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_search_by_name.*
 
 
-class AssignedPatients : AppCompatActivity() {
+class AssignedPatientsByDate : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
     lateinit var assignedPatientsAdapter: AssignedPatientsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_assigned_patients)
+        setContentView(R.layout.activity_assigned_patients_by_date)
         val fireStore = FirebaseFirestore.getInstance()
         val auth = FirebaseAuth.getInstance()
 
@@ -65,30 +65,30 @@ class AssignedPatients : AppCompatActivity() {
 
         auth.currentUser?.uid?.let {
             fireStore.collection("Users").document(it).get()
-                .addOnSuccessListener { it ->
-                    if(it.exists()){
-                        hospital = it.getString("hospital").toString()
-                        unit = it.getString("unit").toString()
+                    .addOnSuccessListener { it ->
+                        if(it.exists()){
+                            hospital = it.getString("hospital").toString()
+                            unit = it.getString("unit").toString()
 
-                        fireStore.collection("PatientDetails").whereEqualTo("hospitalText",hospital).whereEqualTo("unitText",unit).get()
-                            .addOnSuccessListener { documents->
-                                for(document in documents) {
-                                    list.add(document.toObject(PatientDetails::class.java))
-                                }
-                                list.sortBy { det->det.name }
-                                (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
-                                if(list.isEmpty()) {
-                                    Toast.makeText(this,"No pending requests",Toast.LENGTH_LONG).show()
-                                    val intent = Intent(this, MainActivity::class.java)
-                                    startActivity(intent)
-                                }
-                            }
-                            .addOnFailureListener{
-                                Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
-                            }
+                            fireStore.collection("PatientDetails").whereEqualTo("hospitalText",hospital).whereEqualTo("unitText",unit).get()
+                                    .addOnSuccessListener { documents->
+                                        for(document in documents) {
+                                            list.add(document.toObject(PatientDetails::class.java))
+                                        }
+                                        list.sortBy { det->det.date }
+                                        (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+                                        if(list.isEmpty()) {
+                                            Toast.makeText(this,"No pending requests",Toast.LENGTH_LONG).show()
+                                            val intent = Intent(this, MainActivity::class.java)
+                                            startActivity(intent)
+                                        }
+                                    }
+                                    .addOnFailureListener{
+                                        Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
+                                    }
 
+                        }
                     }
-                }
         }
 
 
