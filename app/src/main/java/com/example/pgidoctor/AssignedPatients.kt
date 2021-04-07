@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_search_by_name.*
 class AssignedPatients : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
     lateinit var assignedPatientsAdapter: AssignedPatientsAdapter
+    var list: MutableList<PatientDetails> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +50,6 @@ class AssignedPatients : AppCompatActivity() {
             startActivity(intent)
         }
 
-        var list: MutableList<PatientDetails> = mutableListOf()
 
 
         recyclerView = findViewById(R.id.recyclerView)
@@ -103,12 +103,16 @@ class AssignedPatients : AppCompatActivity() {
 
             when (item!!.itemId) {
                 R.id.header1 -> {
-                    val intent = Intent(this,AssignedPatients::class.java)
-                    startActivity(intent)
+                    list.sortBy{det -> det.name}
+                    (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+                    //val intent = Intent(this,AssignedPatients::class.java)
+                    //startActivity(intent)
                 }
                 R.id.header2 -> {
-                    val intent = Intent(this,AssignedPatientsByDate::class.java)
-                    startActivity(intent)
+                    list.sortBy{det -> det.date}
+                    (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+                    //val intent = Intent(this,AssignedPatientsByDate::class.java)
+                    //startActivity(intent)
                 }
                 R.id.header3 -> {
                     Toast.makeText(this, "By diag", Toast.LENGTH_SHORT).show()

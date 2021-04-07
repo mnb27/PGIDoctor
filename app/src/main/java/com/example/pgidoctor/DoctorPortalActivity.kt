@@ -27,7 +27,7 @@ class DoctorPortalActivity : AppCompatActivity() {
         val searchPatient: CardView = findViewById(R.id.search)
 
         searchPatient.setOnClickListener {
-            startActivity(Intent(this,SearchByNameActivity::class.java))
+            startActivity(Intent(this,SearchActivity::class.java))
         }
 
         logout.setOnClickListener {
