@@ -97,6 +97,21 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="153dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="16dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:padding="5dp"
+        android:text="Forgot Password ?"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/password_text"
+        tools:ignore="MissingConstraints" />
+
     <android.widget.Button
         android:id="@+id/login_button"
         android:layout_width="300dp"
