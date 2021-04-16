@@ -28,6 +28,10 @@ class OpenActivity : AppCompatActivity() {
                             startActivity(Intent(this, DoctorPortalActivity::class.java))
                             finish()
                         }
+                        else if(type == "Patient"){
+                            startActivity(Intent(this,PatientPortalActivity::class.java))
+                            finish()
+                        }
                         else{
                             startActivity(Intent(this, CompounderPortalActivity::class.java))
                             finish()

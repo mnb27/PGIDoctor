@@ -118,7 +118,17 @@ class LoginActivity : AppCompatActivity() {
                                             )
                                         )
                                         finish()
-                                    } else {
+                                    }
+                                    else if (type == "Patient") {
+                                        startActivity(
+                                            Intent(
+                                                this,
+                                                PatientPortalActivity::class.java
+                                            )
+                                        )
+                                        finish()
+                                    }
+                                    else {
                                         startActivity(
                                             Intent(
                                                 this,

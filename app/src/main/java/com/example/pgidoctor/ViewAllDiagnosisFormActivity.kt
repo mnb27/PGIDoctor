@@ -18,10 +18,11 @@ class ViewAllDiagnosisFormActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
     lateinit var viewAllDiagnosisFormAdapter: ViewAllDiagnosisFormAdapter
     var previousDetails: PatientDetails? = null
+    var Test_type: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_all_diagnosis_form)
-
+        Test_type = intent.extras?.get("test_type").toString()
         previousDetails = intent.extras?.get("previousDetails") as PatientDetails
         val collectButton: Button = findViewById(R.id.collectButton)
         collectButton.setOnClickListener {
@@ -58,7 +59,7 @@ class ViewAllDiagnosisFormActivity : AppCompatActivity() {
         doAsync {
 
             val fireStore = FirebaseFirestore.getInstance()
-            fireStore.collection("PatientDetails").document(id).collection("DiagnosisForm").get()
+            fireStore.collection("PatientDetails").document(id).collection("DiagnosisForm").whereEqualTo("type",Test_type).get()
                 .addOnSuccessListener { documents->
                     for(document in documents){
                         val det = document.toObject(PatientDiagnosisDetails::class.java)

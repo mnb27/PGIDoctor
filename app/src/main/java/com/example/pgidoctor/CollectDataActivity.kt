@@ -208,6 +208,7 @@ class CollectDataActivity : AppCompatActivity() {
             val firestore = FirebaseFirestore.getInstance().collection("PatientDetails")
 
 
+
             firestore.document(id1).set(patientDetails)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -217,6 +218,27 @@ class CollectDataActivity : AppCompatActivity() {
                         finish()
                     } else {
                         Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+                    }
+                }
+
+            auth.createUserWithEmailAndPassword(mobileText+"@gmail.com", "Test12345")
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val user = User(
+                            auth.currentUser?.uid!!,
+                            nameText,
+                            mobileText,
+                            mobileText+"@gmail.com",
+                            "Patient",
+                            hospitalText,
+                            unitText
+                        )
+                        val firestore = FirebaseFirestore.getInstance()
+                        firestore.collection("Users").document(auth.currentUser.uid).set(user)
+
+
+                    } else {
+                        Toast.makeText(this, "Unable to add member", Toast.LENGTH_LONG).show()
                     }
                 }
 
