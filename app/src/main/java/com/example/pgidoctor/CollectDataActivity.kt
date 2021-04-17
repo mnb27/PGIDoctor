@@ -132,9 +132,9 @@ class CollectDataActivity : AppCompatActivity() {
         val day = c.get(Calendar.DAY_OF_MONTH)
 
         mPickTimeBtn.setOnClickListener {
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, day ->
                 // Display Selected date in TextView
-                date.getEditText()?.setText("" + dayOfMonth + " / " + month + " / " + year)
+                date.getEditText()?.setText("" + day + " / " + (month.toInt() + 1).toString() + " / " + year)
             }, year, month, day)
             dpd.show()
         }

@@ -3,28 +3,72 @@ package com.example.pgidoctor
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
+import kotlinx.android.synthetic.main.activity_patient_diagnosis_form.*
 import java.util.*
 
 
 class PatientDiagnosisFormActivity : AppCompatActivity() {
+
+    val mriFile : Int = 0
+    val bonescanFile : Int = 1
+    val psmapetFile : Int = 2
+
+    lateinit var uri : Uri
+    var mriLink = ""
+    var bonescanLink = ""
+    var psmapetLink = ""
+    lateinit var mStorage : StorageReference
 
     var previousDetails: PatientDetails? = null
     var ttesttype: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_diagnosis_form)
+
         ttesttype = intent.extras?.get("test_type").toString()
         previousDetails = intent.extras?.get("previousDetails") as PatientDetails
+
+        val uploadMRI = findViewById<View>(R.id.uploadMRI) as Button
+        val uploadBonescan = findViewById<View>(R.id.uploadBonescan) as Button
+        val uploadPSMAPET = findViewById<View>(R.id.uploadPSMA) as Button
+        mStorage = FirebaseStorage.getInstance().getReference("Uploads")
+
+        uploadMRI.setOnClickListener(View.OnClickListener {
+            view: View? -> val intent = Intent()
+            intent.setType ("*/*")
+            intent.setAction(Intent.ACTION_GET_CONTENT)
+            startActivityForResult(Intent.createChooser(intent, "Select File"), mriFile)
+        })
+
+        uploadBonescan.setOnClickListener(View.OnClickListener {
+            view: View? -> val intent = Intent()
+            intent.setType ("*/*")
+            intent.setAction(Intent.ACTION_GET_CONTENT)
+            startActivityForResult(Intent.createChooser(intent, "Select File"), bonescanFile)
+        })
+
+        uploadPSMAPET.setOnClickListener(View.OnClickListener {
+            view: View? -> val intent = Intent()
+            intent.setType ("*/*")
+            intent.setAction(Intent.ACTION_GET_CONTENT)
+            startActivityForResult(Intent.createChooser(intent, "Select File"), psmapetFile)
+        })
+
         val name: TextInputLayout = findViewById(R.id.one)
         val hospital: TextInputLayout = findViewById(R.id.onee)
         val unit: TextInputLayout = findViewById(R.id.oneee)
@@ -45,9 +89,9 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
         val day = c.get(Calendar.DAY_OF_MONTH)
 
         mPickTimeBtn.setOnClickListener {
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, day ->
                 // Display Selected date in TextView
-                date.getEditText()?.setText("" + dayOfMonth + " / " + month + " / " + year)
+                date.getEditText()?.setText("" + day + " / " + (month+1).toString() + " / " + year)
             }, year, month, day)
             dpd.show()
         }
@@ -62,9 +106,6 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
                     val alcohole: TextInputLayout = findViewById(R.id.five)
                     val comorbidities: TextInputLayout = findViewById(R.id.six)
                     val familyho: TextInputLayout = findViewById(R.id.seven)
-                    val bonescan: TextInputLayout = findViewById(R.id.eight)
-                    val mri: TextInputLayout = findViewById(R.id.nine)
-                    val psmapet: TextInputLayout = findViewById(R.id.ten)
 
                     val saveButton: Button = findViewById(R.id.saveButton)
 
@@ -82,9 +123,9 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
                         var alcoholeText = alcohole.editText?.text.toString()
                         var comorbiditiesText = comorbidities.editText?.text.toString()
                         var familyhoText = familyho.editText?.text.toString()
-                        var bonescanText = bonescan.editText?.text.toString()
-                        var mriText = mri.editText?.text.toString()
-                        var psmapetText = psmapet.editText?.text.toString()
+                        var bonescanText = bonescanLink
+                        var mriText = mriLink
+                        var psmapetText = psmapetLink
 
                         val patientDetails = PatientDiagnosisDetails(
                             nameText,
@@ -122,6 +163,82 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
 
                     }
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == mriFile) {
+                uri = data!!.data!!
+                uploadMRI()
+            }else if (requestCode == bonescanFile) {
+                uri = data!!.data!!
+                uploadBonescan()
+            }else if (requestCode == psmapetFile) {
+                uri = data!!.data!!
+                uploadPSMAPET()
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun uploadMRI() {
+        if (uri == null) return
+        val filename = UUID.randomUUID().toString()
+        val ref = FirebaseStorage.getInstance().getReference("/Uploads/$filename")
+        ref.putFile(uri!!)
+                .addOnSuccessListener {
+                    Log.d("collect data activity", "Successfully uploaded image: ${it.metadata?.path}")
+                    Toast.makeText(this, "Uploaded MRI :)", Toast.LENGTH_LONG).show()
+                    ref.downloadUrl.addOnSuccessListener {
+                        Log.d("TAG", "File Location: $it")
+                        mriLink = it.toString()
+                        Log.d("TAG", "File url: $mriLink")
+                    }
+                }
+                .addOnFailureListener {
+                    Log.d("TAG", "Failed to upload image to storage: ${it.message}")
+                    Toast.makeText(this, "Failed To Upload :)", Toast.LENGTH_LONG).show()
+                }
+    }
+
+    private fun uploadBonescan() {
+        if (uri == null) return
+        val filename = UUID.randomUUID().toString()
+        val ref = FirebaseStorage.getInstance().getReference("/Uploads/$filename")
+        ref.putFile(uri!!)
+                .addOnSuccessListener {
+                    Log.d("collect data activity", "Successfully uploaded image: ${it.metadata?.path}")
+                    Toast.makeText(this, "Uploaded BoneScan", Toast.LENGTH_LONG).show()
+                    ref.downloadUrl.addOnSuccessListener {
+                        Log.d("TAG", "File Location: $it")
+                        bonescanLink = it.toString()
+                        Log.d("TAG", "File url: $bonescanLink")
+                    }
+                }
+                .addOnFailureListener {
+                    Log.d("TAG", "Failed to upload image to storage: ${it.message}")
+                    Toast.makeText(this, "Failed To Upload :(", Toast.LENGTH_LONG).show()
+                }
+    }
+
+    private fun uploadPSMAPET() {
+        if (uri == null) return
+        val filename = UUID.randomUUID().toString()
+        val ref = FirebaseStorage.getInstance().getReference("/Uploads/$filename")
+        ref.putFile(uri!!)
+                .addOnSuccessListener {
+                    Log.d("collect data activity", "Successfully uploaded image: ${it.metadata?.path}")
+                    Toast.makeText(this, "Uploaded PSMA PET", Toast.LENGTH_LONG).show()
+                    ref.downloadUrl.addOnSuccessListener {
+                        Log.d("TAG", "File Location: $it")
+                        psmapetLink = it.toString()
+                        Log.d("TAG", "File url: $psmapetLink")
+                    }
+                }
+                .addOnFailureListener {
+                    Log.d("TAG", "Failed to upload image to storage: ${it.message}")
+                    Toast.makeText(this, "Failed To Upload :(", Toast.LENGTH_LONG).show()
+                }
     }
 
 }
