@@ -7,10 +7,7 @@ import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.PopupMenu
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.contains
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +25,7 @@ class SearchActivity : AppCompatActivity() {
     var list1: MutableList<PatientDetails> = mutableListOf()
     lateinit var search: Button
     lateinit var nameT: TextInputLayout
+    lateinit var  spinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +68,7 @@ class SearchActivity : AppCompatActivity() {
 
         var unit = ""
         var hospital = ""
+        spinner = findViewById(R.id.spinner)
 
         val fireStore = FirebaseFirestore.getInstance()
         fireStore.collection("PatientDetails").get()
@@ -99,7 +98,10 @@ class SearchActivity : AppCompatActivity() {
 
             when (item!!.itemId) {
                 R.id.header1 -> {
+                    spinner.adapter = null
+
                     nameT.hint = "Enter Name to Search"
+                    nameT.editText?.setText("")
                     nameT.isEnabled = true
                     search.setOnClickListener {
                         list1.clear()
@@ -115,8 +117,10 @@ class SearchActivity : AppCompatActivity() {
                     //startActivity(intent)
                 }
                 R.id.header2 -> {
+                    spinner.adapter = null
                     nameT.hint = "Enter Date to Search"
                     nameT.isEnabled = true
+                    nameT.editText?.setText("")
                     search.setOnClickListener {
                         list1.clear()
                         var nameentered = nameT.editText?.text.toString()
@@ -133,6 +137,27 @@ class SearchActivity : AppCompatActivity() {
                 R.id.header3 -> {
                     nameT.hint = "Enter Diag to Search"
                     nameT.isEnabled = true
+                    var diagnosis = resources.getStringArray(R.array.Diagnosis)
+                    var nameentered = ""
+                    val adapter = ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,diagnosis)
+                    spinner.adapter = adapter
+                    spinner.onItemSelectedListener = object :
+                        AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(
+                            parent: AdapterView<*>,
+                            view: View, position: Int, id: Long
+                        ) {
+
+                            nameT.editText?.setText(diagnosis[position])
+                            nameentered = diagnosis[position]
+
+
+                        }
+
+                        override fun onNothingSelected(parent: AdapterView<*>) {
+                            // write code to perform some action
+                        }
+                    }
                     search.setOnClickListener {
                         list1.clear()
                         var nameentered = nameT.editText?.text.toString()
