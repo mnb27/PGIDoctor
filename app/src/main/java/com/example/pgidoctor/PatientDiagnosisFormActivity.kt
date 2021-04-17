@@ -19,10 +19,11 @@ import java.util.*
 class PatientDiagnosisFormActivity : AppCompatActivity() {
 
     var previousDetails: PatientDetails? = null
+    var ttesttype: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_diagnosis_form)
-
+        ttesttype = intent.extras?.get("test_type").toString()
         previousDetails = intent.extras?.get("previousDetails") as PatientDetails
         val name: TextInputLayout = findViewById(R.id.one)
         val hospital: TextInputLayout = findViewById(R.id.onee)
@@ -98,7 +99,8 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
                             familyhoText,
                             bonescanText,
                             mriText,
-                            psmapetText
+                            psmapetText,
+                            ttesttype!!
                         )
                         val firestore = FirebaseFirestore.getInstance().collection("PatientDetails")
 

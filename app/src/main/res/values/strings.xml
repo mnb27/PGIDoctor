@@ -29,4 +29,13 @@
     <string name="email_title">Email</string>
     <string name="email">goldenperfecttv@gmail.com</string>
 
+    <string-array name="Diagnosis">
+        <item>blood</item>
+        <item>urine</item>
+        <item>thyroid</item>
+        <item>sugar</item>
+        <item>cholestrol</item>
+    </string-array>
+
+
 </resources>

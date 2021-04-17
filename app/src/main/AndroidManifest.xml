@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pgidoctor">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PGIDoctor">
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".AddNewReportByDoctor"></activity>
+        <activity android:name=".ViewAllTestsActivity" />
+        <activity android:name=".ViewUserPatientRecordsActivity" />
+        <activity android:name=".PatientPortalActivity" />
+        <activity android:name=".SearchActivity" />
         <activity android:name=".AssignedPatientsByDate" />
         <activity android:name=".ViewMoreDetailActivity" />
         <activity android:name=".ViewAllDiagnosisFormActivity" />
@@ -46,13 +58,5 @@
                 android:resource="@xml/file_paths" />
         </provider>
     </application>
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
-
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

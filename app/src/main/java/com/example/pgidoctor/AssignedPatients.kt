@@ -30,26 +30,11 @@ class AssignedPatients : AppCompatActivity() {
         val fireStore = FirebaseFirestore.getInstance()
         val auth = FirebaseAuth.getInstance()
 
-        val search: Button = findViewById(R.id.searchButton)
         val sort: ImageButton = findViewById(R.id.sortButton)
 
         sort.setOnClickListener{
             showPopup(sort)
         }
-
-        searchButton.setOnClickListener {
-            val nameText = name.editText?.text.toString()
-            name.error = ""
-            if(TextUtils.isEmpty(nameText)){
-                name.error = "Name is required"
-                return@setOnClickListener
-            }
-
-            val intent = Intent(this,ViewByNameActivity::class.java)
-            intent.putExtra("name",name.editText?.text.toString())
-            startActivity(intent)
-        }
-
 
 
         recyclerView = findViewById(R.id.recyclerView)
@@ -109,14 +94,12 @@ class AssignedPatients : AppCompatActivity() {
                     //startActivity(intent)
                 }
                 R.id.header2 -> {
-                    list.sortBy{det -> det.date}
+                    list.sortByDescending{det -> det.date}
                     (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
                     //val intent = Intent(this,AssignedPatientsByDate::class.java)
                     //startActivity(intent)
                 }
-                R.id.header3 -> {
-                    Toast.makeText(this, "By diag", Toast.LENGTH_SHORT).show()
-                }
+
             }
 
             true

@@ -25,7 +25,12 @@ class MainActivity : AppCompatActivity() {
             val compounderPortal: CardView = findViewById(R.id.compounderPortal)
             val register: CardView = findViewById(R.id.register)
             val adminPortal: CardView = findViewById(R.id.adminPortal)
+            val PatientPortal: CardView = findViewById(R.id.patient_login)
 
+            PatientPortal.setOnClickListener {
+                val intent = Intent(this, PatientPortalActivity::class.java)
+                startActivity(intent)
+            }
             register.setOnClickListener {
                 val intent = Intent(this, RegisterActivity::class.java)
                 startActivity(intent)
