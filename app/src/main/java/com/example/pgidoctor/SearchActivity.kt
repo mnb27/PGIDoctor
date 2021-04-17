@@ -131,7 +131,28 @@ class SearchActivity : AppCompatActivity() {
                     //startActivity(intent)
                 }
                 R.id.header3 -> {
-                    Toast.makeText(this, "By diag", Toast.LENGTH_SHORT).show()
+                    nameT.hint = "Enter Diag to Search"
+                    nameT.isEnabled = true
+                    search.setOnClickListener {
+                        list1.clear()
+                        var nameentered = nameT.editText?.text.toString()
+                        val firestore = FirebaseFirestore.getInstance()
+                        firestore.collection("PatientDetails").get()
+                            .addOnSuccessListener {
+                                for(document in it){
+                                    var patient = document.toObject(PatientDetails::class.java)
+                                    firestore.collection("PatientDetails").document(patient.id).collection("DiagnosisForm")
+                                        .whereEqualTo("type",nameentered).get()
+                                        .addOnSuccessListener {
+                                            if(!it.isEmpty){
+                                                list1.add(patient)
+                                            }
+                                            (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+                                        }
+                                }
+                                (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+                            }
+                    }
                 }
             }
 
