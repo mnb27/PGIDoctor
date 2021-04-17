@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.view_patients.*
 
 class PatientPortalActivity : AppCompatActivity() {
     var patientDetails: PatientDetails? = null
@@ -69,6 +70,8 @@ class PatientPortalActivity : AppCompatActivity() {
                                 id = document.data.getValue("id").toString()
 
                             }
+                            patientDetails = PatientDetails(name,fathername,date,crno,mobile,age,gender,profileImageUrl,hospitalText,unitText,
+                            id)
                         }
                         .addOnFailureListener{
                             Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()

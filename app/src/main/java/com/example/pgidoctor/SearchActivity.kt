@@ -105,7 +105,7 @@ class SearchActivity : AppCompatActivity() {
                         list1.clear()
                         var nameentered = nameT.editText?.text.toString()
                         for(item in list){
-                            if(item.name.contains(nameentered)){
+                            if(item.name.startsWith(nameentered)){
                                 list1.add(item)
                             }
                         }
