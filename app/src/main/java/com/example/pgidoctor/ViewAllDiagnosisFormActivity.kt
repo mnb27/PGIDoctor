@@ -3,6 +3,7 @@ package com.example.pgidoctor
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -24,18 +25,32 @@ class ViewAllDiagnosisFormActivity : AppCompatActivity() {
         setContentView(R.layout.activity_view_all_diagnosis_form)
         Test_type = intent.extras?.get("test_type").toString()
         previousDetails = intent.extras?.get("previousDetails") as PatientDetails
+
         val collectButton: Button = findViewById(R.id.collectButton)
+        val auth = FirebaseAuth.getInstance()
+        val fireStore = FirebaseFirestore.getInstance()
+
+
+        var type = ""
+        fireStore.collection("Users").document(auth.currentUser.uid).get()
+                .addOnSuccessListener {
+                    type = it.getString("type").toString()
+                    if(type == "Patient") {
+                        collectButton.visibility = View.GONE
+                    }
+                }
+
         collectButton.setOnClickListener {
             val intent = Intent(this,PatientDiagnosisFormActivity::class.java)
             intent.putExtra("previousDetails",previousDetails)
             startActivity(intent)
         }
+
+
         val text: TextView = findViewById(R.id.textView4)
-        text.text = "Diagnosis Forms For " + previousDetails?.name
+        text.text = "Diagnosis Reports For " + previousDetails?.name
 
         val id = previousDetails?.id
-        val fireStore = FirebaseFirestore.getInstance()
-        val auth = FirebaseAuth.getInstance()
 
         var list: MutableList<PatientDiagnosisDetails> = mutableListOf()
 

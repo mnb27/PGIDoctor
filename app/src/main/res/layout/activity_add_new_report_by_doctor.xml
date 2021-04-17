@@ -6,13 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".AddNewReportByDoctor">
 
-    <TextView
-        android:id="@+id/textView1"
+    <LinearLayout
+        android:id="@+id/layout0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Latest Report To be done"
-        tools:ignore="MissingConstraints" />
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
 
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Add/View Reports"
+            android:textColor="#3192F4"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout1"
@@ -23,7 +39,7 @@
         android:weightSum="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        app:layout_constraintTop_toBottomOf="@+id/layout0"
         tools:ignore="MissingConstraints">
 
         <Button
@@ -31,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="320dp"
+            android:layout_marginTop="200dp"
             android:layout_marginRight="30dp"
             android:padding="20dp"
             android:text="Add new report"
@@ -53,7 +69,7 @@
         <Button
             android:id="@+id/view_all_reports"
             android:layout_width="match_parent"
-            android:layout_marginTop="460dp"
+            android:layout_marginTop="100dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_height="100dp"

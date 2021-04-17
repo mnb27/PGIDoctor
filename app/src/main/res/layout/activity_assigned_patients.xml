@@ -7,16 +7,44 @@
     android:background="#FFFFFF"
     tools:context=".AssignedPatients">
 
-
-    <ImageButton
-        android:id="@+id/sortButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/layout0"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#000000"
-        android:onClick="showPopup"
-        android:src="@drawable/ic_sort"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="24dp"
+            android:text="PATIENT RECORD"
+            android:textColor="#3192F4"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/sortButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#3192F4"
+            android:padding="8dp"
+            android:src="@drawable/ic_sort"
+            android:onClick="showPopup"
+            app:layout_constraintStart_toStartOf="@+id/text"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

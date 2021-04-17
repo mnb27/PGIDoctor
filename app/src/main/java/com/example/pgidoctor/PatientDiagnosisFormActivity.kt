@@ -106,6 +106,8 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
                     val alcohole: TextInputLayout = findViewById(R.id.five)
                     val comorbidities: TextInputLayout = findViewById(R.id.six)
                     val familyho: TextInputLayout = findViewById(R.id.seven)
+                    val remarks: TextInputLayout = findViewById(R.id.eight)
+                    val medicines: TextInputLayout = findViewById(R.id.nine)
 
                     val saveButton: Button = findViewById(R.id.saveButton)
 
@@ -126,6 +128,8 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
                         var bonescanText = bonescanLink
                         var mriText = mriLink
                         var psmapetText = psmapetLink
+                        var remarksText = remarks.editText?.text.toString()
+                        var medicinesText = medicines.editText?.text.toString()
 
                         val patientDetails = PatientDiagnosisDetails(
                             nameText,
@@ -141,7 +145,9 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
                             bonescanText,
                             mriText,
                             psmapetText,
-                            ttesttype!!
+                            ttesttype!!,
+                            remarksText,
+                            medicinesText
                         )
                         val firestore = FirebaseFirestore.getInstance().collection("PatientDetails")
 

@@ -37,8 +37,8 @@ class ViewMoreDetailActivity : AppCompatActivity() {
         val alcohole: TextInputLayout = findViewById(R.id.five)
         val comorbidities: TextInputLayout = findViewById(R.id.six)
         val familyho: TextInputLayout = findViewById(R.id.seven)
-//        val bonescan: TextInputLayout = findViewById(R.id.eight)
-//        val mri: TextInputLayout = findViewById(R.id.nine)
+        val doctorRemarks: TextInputLayout = findViewById(R.id.eight)
+        val medicines: TextInputLayout = findViewById(R.id.nine)
 //        val psmapet: TextInputLayout = findViewById(R.id.ten)
 
         val showMRI: Button = findViewById(R.id.showMRI)
@@ -57,10 +57,9 @@ class ViewMoreDetailActivity : AppCompatActivity() {
         unit.editText?.setText(previousDetails?.unitText)
         comorbidities.editText?.setText(previousDetails?.comorbidities)
         familyho.editText?.setText(previousDetails?.familyho)
-//        bonescan.editText?.setText(previousDetails?.bonescan)
-//        mri.editText?.setText(previousDetails?.mri)
+        medicines.editText?.setText(previousDetails?.medicines)
+        doctorRemarks.editText?.setText(previousDetails?.doctorRemarks)
 //        psmapet.editText?.setText(previousDetails?.psmapet)
-
 
         var clickMRI = true
         showMRI.setOnClickListener(View.OnClickListener {

@@ -16,5 +16,7 @@ data class PatientDiagnosisDetails(
     var bonescan: String = "",
     var mri: String = "",
     var psmapet: String = "",
-    var type :String = ""
+    var type :String = "",
+    var doctorRemarks :String = "",
+    var medicines : String = ""
 ): Serializable

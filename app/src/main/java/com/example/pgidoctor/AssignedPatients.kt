@@ -7,10 +7,7 @@ import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.PopupMenu
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -35,7 +32,6 @@ class AssignedPatients : AppCompatActivity() {
         sort.setOnClickListener{
             showPopup(sort)
         }
-
 
         recyclerView = findViewById(R.id.recyclerView)
         assignedPatientsAdapter = AssignedPatientsAdapter(this,list)
@@ -63,7 +59,7 @@ class AssignedPatients : AppCompatActivity() {
                                 list.sortBy { det->det.name }
                                 (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
                                 if(list.isEmpty()) {
-                                    Toast.makeText(this,"No pending requests",Toast.LENGTH_LONG).show()
+                                    Toast.makeText(this,"No patient records",Toast.LENGTH_LONG).show()
                                     val intent = Intent(this, MainActivity::class.java)
                                     startActivity(intent)
                                 }

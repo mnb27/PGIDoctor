@@ -26,7 +26,7 @@ class ViewAllDiagnosisFormAdapter(var context: Context, var detailsList: Mutable
     override fun onBindViewHolder(holder: ViewAllDiagnosisFormAdapter.DetailsViewHolder, position: Int) {
         var details = detailsList[position]
         var pos = position + 1
-        holder.nameText.text = "Diagnosis Form $pos"
+        holder.nameText.text = "Report # $pos"
         holder.date.text = "Collection Date: " + details.date
 
 

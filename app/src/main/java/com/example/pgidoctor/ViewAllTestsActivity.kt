@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 
 class ViewAllTestsActivity : AppCompatActivity() {
@@ -16,6 +17,13 @@ class ViewAllTestsActivity : AppCompatActivity() {
         val Blood: Button = findViewById(R.id.blood_test)
         val Thyroid: Button = findViewById(R.id.thyroid_test)
         val Cholestrol: Button = findViewById(R.id.cholestrol_test)
+
+        val goback: ImageView = findViewById(R.id.backB)
+
+        goback.setOnClickListener {
+            val intent = Intent(this, AssignedPatients::class.java)
+            startActivity(intent)
+        }
 
         Urine.setOnClickListener {
             val intent = Intent(this,AddNewReportByDoctor::class.java)

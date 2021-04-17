@@ -46,7 +46,7 @@ class CompounderPortalActivity : AppCompatActivity() {
         }
 
         searchPatient.setOnClickListener {
-            startActivity(Intent(this,SearchByNameActivity::class.java))
+            startActivity(Intent(this,SearchActivity::class.java))
         }
 
     }

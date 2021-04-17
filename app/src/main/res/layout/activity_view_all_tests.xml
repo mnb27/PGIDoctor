@@ -5,28 +5,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewAllTestsActivity">
+
     <LinearLayout
+        android:id="@+id/layout0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/backB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="#3192F4"
+            android:padding="8dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+       <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="24dp"
+        android:text="Select Test To Continue"
+        android:textColor="#3192F4"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
         android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:weightSum="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toBottomOf="@+id/layout0">
 
-        <com.google.android.material.button.MaterialButton
+        <android.widget.Button
             android:id="@+id/urine_test"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_height="100dp"
-            android:padding="20dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/custom_box"
+            android:backgroundTint="@null"
             android:text="Urine Test"
+            android:padding="20dp"
+            android:textColor="#ffffff"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 
@@ -37,21 +78,21 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:weightSum="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toBottomOf="@+id/layout1">
 
-        <com.google.android.material.button.MaterialButton
+        <android.widget.Button
             android:id="@+id/blood_test"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_marginTop="180dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_height="100dp"
-            android:padding="20dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/custom_box"
+            android:backgroundTint="#f56342"
             android:text="Blood Test"
+            android:padding="20dp"
+            android:textColor="#ffffff"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 
@@ -62,21 +103,21 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:weightSum="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toBottomOf="@+id/layout2">
 
-        <com.google.android.material.button.MaterialButton
+        <android.widget.Button
             android:id="@+id/thyroid_test"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_marginTop="320dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_height="100dp"
-            android:padding="20dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/custom_box"
+            android:backgroundTint="#29b335"
             android:text="Thyroid Test"
+            android:padding="20dp"
+            android:textColor="#ffffff"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
     <LinearLayout
@@ -86,21 +127,21 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:weightSum="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toBottomOf="@+id/layout3">
 
-        <com.google.android.material.button.MaterialButton
+        <android.widget.Button
             android:id="@+id/cholestrol_test"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_marginTop="460dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_height="100dp"
-            android:padding="20dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/custom_box"
+            android:backgroundTint="#8843a3"
             android:text="Cholestrol Test"
+            android:padding="20dp"
+            android:textColor="#ffffff"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

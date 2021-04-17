@@ -64,7 +64,7 @@
 
             <Button
                 android:id="@+id/viewMore"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="View Details"
