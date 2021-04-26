@@ -7,5 +7,17 @@
     <item
         android:id="@+id/header2"
         android:title="Sort by date" />
+    <item
+        android:id="@+id/header3"
+        android:title="Sort by Starred" />
+    <item
+        android:id="@+id/header4"
+        android:title="Sort by Important" />
+    <item
+        android:id="@+id/header5"
+        android:title="Sort by Nearby" />
+    <item
+        android:id="@+id/header6"
+        android:title="Sort by Severe" />
 
 </menu>

@@ -37,5 +37,12 @@
         <item>cholestrol</item>
     </string-array>
 
+    <string-array name="Tags">
+        <item>Starred</item>
+        <item>Important</item>
+        <item>Severe</item>
+        <item>Nearby</item>
+    </string-array>
+
 
 </resources>

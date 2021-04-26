@@ -28,8 +28,8 @@
                 android:layout_width="158dp"
                 android:layout_height="128dp"
                 android:padding="10dp"
-                app:civ_border_width="4dp"
                 app:civ_border_color="#ffffff"
+                app:civ_border_width="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.805"
                 app:layout_constraintStart_toEndOf="@+id/name_text"
@@ -41,9 +41,9 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="Name"
-                android:textStyle="bold"
                 android:textColor="#ffffff"
                 android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,30 +84,89 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hospital" />
 
-            <android.widget.Button
-                android:id="@+id/viewMore"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="View More"
-                android:textSize="12sp"
-                app:layout_constraintTop_toBottomOf="@id/date"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginRight="200dp">
-            </android.widget.Button>
-
-            <android.widget.Button
-                android:id="@+id/collectdiagnosisdata"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Collect"
-                android:textColor="#fcffff"
-                android:textStyle="bold"
-                android:background="#4CAF50"
-                android:layout_marginStart="204dp"
-                app:layout_constraintStart_toEndOf="@+id/viewMore"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/date">
-            </android.widget.Button>
+
+                <android.widget.Button
+                    android:id="@+id/viewMore"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="View More"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"></android.widget.Button>
+
+                <android.widget.Button
+                    android:id="@+id/collectdiagnosisdata"
+                    android:layout_width="100dp"
+                    android:layout_height="37dp"
+                    android:padding="10dp"
+                    android:text="Collect"
+                    android:textSize="12sp"
+                    android:background="#4CAF50"
+                    android:textColor="#fcffff"
+                    app:layout_constraintStart_toEndOf="@+id/viewMore"></android.widget.Button>
+
+                <Button
+                    android:id="@+id/starred"
+                    android:layout_height="30dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/ic_star"
+                    android:ellipsize="end"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    app:backgroundTint="@null"
+                    android:layout_width="40dp" />
+
+                <Button
+                    android:id="@+id/important"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/ic_info"
+                    android:ellipsize="end"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    app:backgroundTint="@null"
+                    android:layout_width="40dp" />
+
+                <Button
+                    android:id="@+id/severe"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/ic_danger"
+                    android:ellipsize="end"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    app:backgroundTint="@null"
+                    android:layout_width="40dp" />
+
+                <Button
+                    android:id="@+id/nearby"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/ic_loaction"
+                    android:ellipsize="end"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    app:backgroundTint="@null"
+                    android:layout_width="40dp" />
+
+            </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

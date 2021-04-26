@@ -21,7 +21,7 @@ class ViewAllTestsActivity : AppCompatActivity() {
         val goback: ImageView = findViewById(R.id.backB)
 
         goback.setOnClickListener {
-            val intent = Intent(this, AssignedPatients::class.java)
+            val intent = Intent(this, OpenActivity::class.java)
             startActivity(intent)
         }
 

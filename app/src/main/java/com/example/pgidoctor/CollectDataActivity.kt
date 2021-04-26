@@ -68,7 +68,7 @@ class CollectDataActivity : AppCompatActivity() {
             selectphoto_imageview_register.setImageBitmap(myBitmap)
             selectphoto_imageview_register.setBackgroundColor(Color.parseColor("#ffffff"))
         } else {
-            displayMessage(baseContext, "Request cancelled or something went wrong.")
+//            displayMessage(baseContext, "Request cancelled or something went wrong.")
         }
 
         uploadImageToFirebaseStorage();
@@ -141,6 +141,7 @@ class CollectDataActivity : AppCompatActivity() {
         //////end
 
         val name: TextInputLayout = findViewById(R.id.one)
+        val email: TextInputLayout = findViewById(R.id.mail)
         val fathername: TextInputLayout = findViewById(R.id.two)
         val datecollected: TextInputLayout = findViewById(R.id.three)
         val crno: TextInputLayout = findViewById(R.id.four)
@@ -158,6 +159,7 @@ class CollectDataActivity : AppCompatActivity() {
 
         saveButton.setOnClickListener {
             var nameText = name.editText?.text.toString()
+            var emailText = email.editText?.text.toString()
             var fathernameText = fathername.editText?.text.toString()
             var datecollectedText = datecollected.editText?.text.toString()
             var crnoText = crno.editText?.text.toString()
@@ -175,6 +177,11 @@ class CollectDataActivity : AppCompatActivity() {
 
             if (nameText.isEmpty()) {
                 name.error = "Required Field"
+                return@setOnClickListener
+            }
+
+            if (emailText.isEmpty()) {
+                email.error = "Required Field"
                 return@setOnClickListener
             }
 
@@ -204,7 +211,7 @@ class CollectDataActivity : AppCompatActivity() {
             var id = SimpleDateFormat("ddMMyyyyhh:mm:ss")
             val id1 = id.format(Date())
 
-            val patientDetails = PatientDetails(nameText, fathernameText, datecollectedText, crnoText, mobileText, ageText, genderText,profileImageUrlText,hospitalText,unitText,id1)
+            val patientDetails = PatientDetails(nameText, fathernameText, datecollectedText, crnoText, mobileText, ageText, genderText,profileImageUrlText,hospitalText,unitText,id1,"","","","",emailText)
             val firestore = FirebaseFirestore.getInstance().collection("PatientDetails")
 
 
@@ -221,14 +228,14 @@ class CollectDataActivity : AppCompatActivity() {
                     }
                 }
 
-            auth.createUserWithEmailAndPassword(mobileText+"@gmail.com", "Test12345")
+            auth.createUserWithEmailAndPassword(emailText, "Test12345")
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val user = User(
                             auth.currentUser?.uid!!,
                             nameText,
                             mobileText,
-                            mobileText+"@gmail.com",
+                            emailText,
                             "Patient",
                             hospitalText,
                             unitText

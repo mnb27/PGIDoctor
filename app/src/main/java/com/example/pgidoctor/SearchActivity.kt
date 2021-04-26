@@ -135,7 +135,7 @@ class SearchActivity : AppCompatActivity() {
                     //startActivity(intent)
                 }
                 R.id.header3 -> {
-                    nameT.hint = "Enter Diag to Search"
+                    nameT.hint = "Enter test to Search"
                     nameT.isEnabled = true
                     var diagnosis = resources.getStringArray(R.array.Diagnosis)
                     var nameentered = ""

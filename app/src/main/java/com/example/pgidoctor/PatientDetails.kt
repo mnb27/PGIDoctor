@@ -13,5 +13,10 @@ data class PatientDetails(
     var profileImageUrl: String = "",
     var hospitalText: String="",
     var unitText: String = "",
-    var id: String = ""
-): Serializable
+    var id: String = "",
+    var isstarred: String = "",
+    var isimportant: String = "",
+    var issevere: String = "",
+    var isnearby: String = "",
+    var email: String = ""
+    ): Serializable

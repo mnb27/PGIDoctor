@@ -26,25 +26,25 @@ class ViewAllDiagnosisFormActivity : AppCompatActivity() {
         Test_type = intent.extras?.get("test_type").toString()
         previousDetails = intent.extras?.get("previousDetails") as PatientDetails
 
-        val collectButton: Button = findViewById(R.id.collectButton)
+//        val collectButton: Button = findViewById(R.id.collectButton)
         val auth = FirebaseAuth.getInstance()
         val fireStore = FirebaseFirestore.getInstance()
 
 
-        var type = ""
-        fireStore.collection("Users").document(auth.currentUser.uid).get()
-                .addOnSuccessListener {
-                    type = it.getString("type").toString()
-                    if(type == "Patient") {
-                        collectButton.visibility = View.GONE
-                    }
-                }
+//        var type = ""
+//        fireStore.collection("Users").document(auth.currentUser.uid).get()
+//                .addOnSuccessListener {
+//                    type = it.getString("type").toString()
+//                    if(type == "Patient") {
+//                        collectButton.visibility = View.GONE
+//                    }
+//                }
 
-        collectButton.setOnClickListener {
-            val intent = Intent(this,PatientDiagnosisFormActivity::class.java)
-            intent.putExtra("previousDetails",previousDetails)
-            startActivity(intent)
-        }
+//        collectButton.setOnClickListener {
+//            val intent = Intent(this,PatientDiagnosisFormActivity::class.java)
+//            intent.putExtra("previousDetails",previousDetails)
+//            startActivity(intent)
+//        }
 
 
         val text: TextView = findViewById(R.id.textView4)

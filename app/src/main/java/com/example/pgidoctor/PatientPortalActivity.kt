@@ -74,12 +74,12 @@ class PatientPortalActivity : AppCompatActivity() {
                             id)
                         }
                         .addOnFailureListener{
-                            Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
+//                            Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
                         }
                 }
             }
             .addOnFailureListener{
-                Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
+//                Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
             }
 
         ViewReport.setOnClickListener {

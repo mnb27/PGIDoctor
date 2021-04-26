@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             PatientPortal.setOnClickListener {
                 val intent = Intent(this, PatientPortalActivity::class.java)
                 startActivity(intent)
+                finish()
             }
             register.setOnClickListener {
                 val intent = Intent(this, RegisterActivity::class.java)

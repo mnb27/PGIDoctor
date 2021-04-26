@@ -2,6 +2,7 @@ package com.example.pgidoctor
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -24,6 +28,10 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
         var unit: TextView = itemView.findViewById(R.id.unit)
         var viewMore: Button = itemView.findViewById(R.id.viewMore)
         var collectdiagnosisdata: Button = itemView.findViewById(R.id.collectdiagnosisdata)
+        var starred: Button = itemView.findViewById(R.id.starred)
+        var important: Button = itemView.findViewById(R.id.important)
+        var nearby: Button = itemView.findViewById(R.id.nearby)
+        var severe: Button = itemView.findViewById(R.id.severe)
         var profileImage: CircleImageView = itemView.findViewById(R.id.imageoftask)
 
     }
@@ -33,6 +41,47 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
         holder.date.text = "Collection Date: " + details.date
         holder.hospital.text = "Hospital: " + details.hospitalText
         holder.unit.text = "Unit: " + details.unitText
+
+        var clickStarred = true
+        var clickImportant = true
+        var clickNearby = true
+        var clickSevere = true
+
+        var isstarred = details.isstarred
+        if(isstarred.toString() == "yes") {
+            holder.starred.setBackgroundResource(R.drawable.star)
+            clickStarred = false
+        }else {
+            holder.starred.setBackgroundResource(R.drawable.ic_star)
+            clickStarred = true
+        }
+
+        var isnearby = details.isnearby
+        if(isnearby.toString() == "yes") {
+            holder.nearby.setBackgroundResource(R.drawable.nearby)
+            clickNearby = false
+        }else {
+            holder.nearby.setBackgroundResource(R.drawable.ic_loaction)
+            clickNearby = true
+        }
+
+        var issevere = details.issevere
+        if(issevere.toString() == "yes") {
+            holder.severe.setBackgroundResource(R.drawable.alarm)
+            clickSevere = false
+        }else {
+            holder.severe.setBackgroundResource(R.drawable.ic_danger)
+            clickSevere = true
+        }
+
+        var isimportant = details.isimportant
+        if(isimportant.toString() == "yes") {
+            holder.important.setBackgroundResource(R.drawable.information)
+            clickImportant = false
+        }else {
+            holder.important.setBackgroundResource(R.drawable.ic_info)
+            clickImportant = true
+        }
 
 
         holder.viewMore.text = "View More"
@@ -58,6 +107,90 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
             intent.putExtra("previousDetails",details)
             context.startActivity(intent)
         }
+
+        val id = details.id
+
+
+        val firestore = FirebaseFirestore.getInstance()
+        holder.starred.setOnClickListener(View.OnClickListener {
+            clickStarred = if (clickStarred) {
+                var Docref = firestore.collection("PatientDetails").document(id);
+                var mark = "yes";
+                Docref.update("isstarred" , mark)
+                        .addOnSuccessListener {
+                            holder.starred.setBackgroundResource(R.drawable.star)
+                        }
+                false
+            } else {
+                var Docref = firestore.collection("PatientDetails").document(id);
+                var mark = "no";
+                Docref.update("isstarred" , mark)
+                        .addOnSuccessListener {
+                            holder.starred.setBackgroundResource(R.drawable.ic_star)
+                        }
+                true
+            }
+        })
+
+        holder.important.setOnClickListener(View.OnClickListener {
+            clickImportant = if (clickImportant) {
+                var Docref = firestore.collection("PatientDetails").document(id);
+                var mark = "yes";
+                Docref.update("isimportant" , mark)
+                        .addOnSuccessListener {
+                            holder.important.setBackgroundResource(R.drawable.information)
+                        }
+                false
+            } else {
+                var Docref = firestore.collection("PatientDetails").document(id);
+                var mark = "no";
+                Docref.update("isimportant" , mark)
+                        .addOnSuccessListener {
+                            holder.important.setBackgroundResource(R.drawable.ic_info)
+                        }
+                true
+            }
+        })
+
+        holder.nearby.setOnClickListener(View.OnClickListener {
+            clickNearby = if (clickNearby) {
+                var Docref = firestore.collection("PatientDetails").document(id);
+                var mark = "yes";
+                Docref.update("isnearby" , mark)
+                        .addOnSuccessListener {
+                            holder.nearby.setBackgroundResource(R.drawable.nearby)
+                        }
+                false
+            } else {
+                var Docref = firestore.collection("PatientDetails").document(id);
+                var mark = "no";
+                Docref.update("isnearby" , mark)
+                        .addOnSuccessListener {
+                            holder.nearby.setBackgroundResource(R.drawable.ic_loaction)
+                        }
+                true
+            }
+        })
+
+        holder.severe.setOnClickListener(View.OnClickListener {
+            clickSevere = if (clickSevere) {
+                var Docref = firestore.collection("PatientDetails").document(id);
+                var mark = "yes";
+                Docref.update("issevere" , mark)
+                        .addOnSuccessListener {
+                            holder.severe.setBackgroundResource(R.drawable.alarm)
+                        }
+                false
+            } else {
+                var Docref = firestore.collection("PatientDetails").document(id);
+                var mark = "no";
+                Docref.update("issevere" , mark)
+                        .addOnSuccessListener {
+                            holder.severe.setBackgroundResource(R.drawable.ic_danger)
+                        }
+                true
+            }
+        })
 
     }
 

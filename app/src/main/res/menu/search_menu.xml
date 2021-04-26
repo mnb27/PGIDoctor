@@ -9,6 +9,5 @@
         android:title="Search by date" />
     <item
         android:id="@+id/header3"
-        android:title="Search by diag" />
-
+        android:title="Search by test" />
 </menu>

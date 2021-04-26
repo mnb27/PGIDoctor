@@ -86,14 +86,26 @@ class AssignedPatients : AppCompatActivity() {
                 R.id.header1 -> {
                     list.sortBy{det -> det.name}
                     (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
-                    //val intent = Intent(this,AssignedPatients::class.java)
-                    //startActivity(intent)
                 }
                 R.id.header2 -> {
                     list.sortByDescending{det -> det.date}
                     (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
-                    //val intent = Intent(this,AssignedPatientsByDate::class.java)
-                    //startActivity(intent)
+                }
+                R.id.header3 -> {
+                    list.sortByDescending{det -> det.isstarred}
+                    (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+                }
+                R.id.header4 -> {
+                    list.sortByDescending{det -> det.isimportant}
+                    (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+                }
+                R.id.header5 -> {
+                    list.sortByDescending{det -> det.isnearby}
+                    (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+                }
+                R.id.header6 -> {
+                    list.sortByDescending{det -> det.issevere}
+                    (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
                 }
 
             }
