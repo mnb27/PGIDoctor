@@ -12,11 +12,14 @@
         android:title="Search by test" />
     <item
         android:id="@+id/header4"
-        android:title="Important" />
+        android:title="View Important" />
     <item
         android:id="@+id/header5"
-        android:title="Starred" />
+        android:title="View Starred" />
     <item
         android:id="@+id/header6"
-        android:title="Severe" />
+        android:title="View Severe" />
+    <item
+        android:id="@+id/header7"
+        android:title="View Nearby" />
 </menu>

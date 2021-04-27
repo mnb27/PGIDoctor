@@ -3,6 +3,7 @@ package com.example.pgidoctor
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -27,6 +28,7 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
         var hospital: TextView = itemView.findViewById(R.id.hospital)
         var unit: TextView = itemView.findViewById(R.id.unit)
         var viewMore: Button = itemView.findViewById(R.id.viewMore)
+        var whatsapp: Button = itemView.findViewById(R.id.whatsapp)
         var collectdiagnosisdata: Button = itemView.findViewById(R.id.collectdiagnosisdata)
         var starred: Button = itemView.findViewById(R.id.starred)
         var important: Button = itemView.findViewById(R.id.important)
@@ -38,9 +40,21 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
     override fun onBindViewHolder(holder: AssignedPatientsAdapter.DetailsViewHolder, position: Int) {
         var details = detailsList[position]
         holder.nameText.text = "Name: " + details.name
-        holder.date.text = "Collection Date: " + details.date
+
+        var datee = details.date
+        holder.date.text = "Taken On: " + datee.substring(6,8) + " / " + datee.substring(4,6) + " / " + datee.substring(0,4)
         holder.hospital.text = "Hospital: " + details.hospitalText
         holder.unit.text = "Unit: " + details.unitText
+
+
+        var number = "+91"+details.mobile
+
+        holder.whatsapp.setOnClickListener {
+            val url = "https://api.whatsapp.com/send?phone=$number"
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            context.startActivity(i)
+        }
 
         var clickStarred = true
         var clickImportant = true

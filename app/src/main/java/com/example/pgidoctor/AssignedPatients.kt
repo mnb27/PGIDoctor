@@ -84,7 +84,7 @@ class AssignedPatients : AppCompatActivity() {
 
             when (item!!.itemId) {
                 R.id.header1 -> {
-                    list.sortBy{det -> det.name}
+                    list.sortBy{det -> det.name.toLowerCase()}
                     (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
                 }
                 R.id.header2 -> {

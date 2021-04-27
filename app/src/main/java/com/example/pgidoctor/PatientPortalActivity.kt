@@ -27,6 +27,9 @@ class PatientPortalActivity : AppCompatActivity() {
         editProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+        Chat.setOnClickListener {
+            startActivity(Intent(this, AssignedDoctors::class.java))
+        }
         if(auth.currentUser == null){
             startActivity(Intent(this,LoginActivity::class.java))
             finish()

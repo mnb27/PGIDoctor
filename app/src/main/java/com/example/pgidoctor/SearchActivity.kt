@@ -105,9 +105,9 @@ class SearchActivity : AppCompatActivity() {
                     nameT.isEnabled = true
                     search.setOnClickListener {
                         list1.clear()
-                        var nameentered = nameT.editText?.text.toString()
+                        var nameentered = nameT.editText?.text.toString().toLowerCase()
                         for(item in list){
-                            if(item.name.startsWith(nameentered)){
+                            if(item.name.toLowerCase().startsWith(nameentered)){
                                 list1.add(item)
                             }
                         }
@@ -213,6 +213,20 @@ class SearchActivity : AppCompatActivity() {
                     list1.clear()
                     for(item in list){
                         if(item.issevere == "yes"){
+                            list1.add(item)
+                        }
+                    }
+                    (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+
+                    //val intent = Intent(this,AssignedPatientsByDate::class.java)
+                    //startActivity(intent)
+                }
+                R.id.header7 -> {
+                    spinner.adapter = null
+
+                    list1.clear()
+                    for(item in list){
+                        if(item.isnearby == "yes"){
                             list1.add(item)
                         }
                     }
