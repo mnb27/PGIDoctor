@@ -60,7 +60,7 @@ class AssignedPatients : AppCompatActivity() {
                                 (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
                                 if(list.isEmpty()) {
                                     Toast.makeText(this,"No patient records",Toast.LENGTH_LONG).show()
-                                    val intent = Intent(this, MainActivity::class.java)
+                                    val intent = Intent(this, OpenActivity::class.java)
                                     startActivity(intent)
                                 }
                             }

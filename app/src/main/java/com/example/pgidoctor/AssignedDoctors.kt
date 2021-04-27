@@ -61,7 +61,7 @@ class AssignedDoctors : AppCompatActivity() {
                                 (recyclerView.adapter as AssignedDoctorsAdapter).notifyDataSetChanged()
                                 if(list.isEmpty()) {
                                     Toast.makeText(this,"No Doctor records",Toast.LENGTH_LONG).show()
-                                    val intent = Intent(this, MainActivity::class.java)
+                                    val intent = Intent(this, OpenActivity::class.java)
                                     startActivity(intent)
                                 }
                             }

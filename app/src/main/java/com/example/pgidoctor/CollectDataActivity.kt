@@ -238,32 +238,30 @@ class CollectDataActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Successfully Saved", Toast.LENGTH_LONG).show()
-                        val intent = Intent(this, DoctorPortalActivity::class.java)
+                        auth.createUserWithEmailAndPassword(emailText, "Test12345")
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    val user = User(
+                                        auth.currentUser?.uid!!,
+                                        nameText,
+                                        mobileText,
+                                        emailText,
+                                        "Patient",
+                                        hospitalText,
+                                        unitText
+                                    )
+                                    val firestore = FirebaseFirestore.getInstance()
+                                    firestore.collection("Users").document(auth.currentUser.uid).set(user)
+
+                                } else {
+                                    Toast.makeText(this, "Unable to add member", Toast.LENGTH_LONG).show()
+                                }
+                            }
+                        val intent = Intent(this, OpenActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
                         Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
-                    }
-                }
-
-            auth.createUserWithEmailAndPassword(emailText, "Test12345")
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val user = User(
-                            auth.currentUser?.uid!!,
-                            nameText,
-                            mobileText,
-                            emailText,
-                            "Patient",
-                            hospitalText,
-                            unitText
-                        )
-                        val firestore = FirebaseFirestore.getInstance()
-                        firestore.collection("Users").document(auth.currentUser.uid).set(user)
-
-
-                    } else {
-                        Toast.makeText(this, "Unable to add member", Toast.LENGTH_LONG).show()
                     }
                 }
 

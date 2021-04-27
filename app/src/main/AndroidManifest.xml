@@ -20,7 +20,6 @@
         android:roundIcon="@drawable/appicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.PGIDoctor">
-        <activity android:name=".AssignedDoctorsAdapter"></activity>
         <activity android:name=".AssignedDoctors" />
         <activity android:name=".AddNewReportByDoctor" />
         <activity android:name=".ViewAllTestsActivity" />

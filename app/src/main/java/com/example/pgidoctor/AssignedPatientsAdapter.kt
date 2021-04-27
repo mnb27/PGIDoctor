@@ -39,7 +39,7 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
     }
     override fun onBindViewHolder(holder: AssignedPatientsAdapter.DetailsViewHolder, position: Int) {
         var details = detailsList[position]
-        holder.nameText.text = "Name: " + details.name
+        holder.nameText.text = details.name
 
         var datee = details.date
         holder.date.text = "Taken On: " + datee.substring(6,8) + " / " + datee.substring(4,6) + " / " + datee.substring(0,4)

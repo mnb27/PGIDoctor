@@ -47,10 +47,12 @@ class ViewMoreDetailActivity : AppCompatActivity() {
         var loadImage: ImageView = findViewById(R.id.loadImage)
 
         name.editText?.setText(previousDetails?.name)
-        date.editText?.setText(previousDetails?.date)
+        var datee = previousDetails?.date
+        if (datee != null) {
+            date.editText?.setText(datee.substring(6,8) + " / " + datee.substring(4,6) + " / " + datee.substring(0,4))
+        }
         weight.editText?.setText(previousDetails?.weight)
         height.editText?.setText(previousDetails?.height)
-        date.editText?.setText(previousDetails?.date)
         smoking.editText?.setText(previousDetails?.smoking)
         alcohole.editText?.setText(previousDetails?.alcohole)
         hospital.editText?.setText(previousDetails?.hospitalText)

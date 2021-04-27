@@ -27,8 +27,9 @@ class ViewAllDiagnosisFormAdapter(var context: Context, var detailsList: Mutable
         var details = detailsList[position]
         var pos = position + 1
         holder.nameText.text = "Report # $pos"
-        holder.date.text = "Collection Date: " + details.date
 
+        var datee = details.date
+        holder.date.text = "Taken On: " + datee.substring(6,8) + " / " + datee.substring(4,6) + " / " + datee.substring(0,4)
 
         holder.viewMore.text = "View Details"
 

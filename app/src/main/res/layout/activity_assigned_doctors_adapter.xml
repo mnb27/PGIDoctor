@@ -42,7 +42,7 @@
                 android:padding="10dp"
                 android:text="Name"
                 android:textColor="#ffffff"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
