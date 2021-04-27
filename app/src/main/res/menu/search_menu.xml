@@ -10,4 +10,13 @@
     <item
         android:id="@+id/header3"
         android:title="Search by test" />
+    <item
+        android:id="@+id/header4"
+        android:title="Important" />
+    <item
+        android:id="@+id/header5"
+        android:title="Starred" />
+    <item
+        android:id="@+id/header6"
+        android:title="Severe" />
 </menu>

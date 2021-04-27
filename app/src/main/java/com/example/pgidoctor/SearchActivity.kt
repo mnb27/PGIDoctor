@@ -179,6 +179,48 @@ class SearchActivity : AppCompatActivity() {
                             }
                     }
                 }
+                R.id.header4 -> {
+                    spinner.adapter = null
+
+                        list1.clear()
+                        for(item in list){
+                            if(item.isimportant == "yes"){
+                                list1.add(item)
+                            }
+                        }
+                        (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+
+                    //val intent = Intent(this,AssignedPatientsByDate::class.java)
+                    //startActivity(intent)
+                }
+                R.id.header5 -> {
+                    spinner.adapter = null
+
+                    list1.clear()
+                    for(item in list){
+                        if(item.isstarred == "yes"){
+                            list1.add(item)
+                        }
+                    }
+                    (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+
+                    //val intent = Intent(this,AssignedPatientsByDate::class.java)
+                    //startActivity(intent)
+                }
+                R.id.header6 -> {
+                    spinner.adapter = null
+
+                    list1.clear()
+                    for(item in list){
+                        if(item.issevere == "yes"){
+                            list1.add(item)
+                        }
+                    }
+                    (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+
+                    //val intent = Intent(this,AssignedPatientsByDate::class.java)
+                    //startActivity(intent)
+                }
             }
 
             true
