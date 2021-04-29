@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  
+
+    <title>Users</title>
+</head>
+<style>
+.col-class1{
+  width: 300px;
+    margin: 10px;
+    margin-top:31px;
+}
+
+
+
+</style>
+
+<body  onload = "readUsers()">
+    <!-- nav bar started -->
+    <nav class="navbar py-0 navbar-expand-lg navbar-dark bg-info">
+
+      <div class="container-fluid" style = "width:60%">
+          <a class="navbar-brand" href="/">
+            <i class="fa fa-home" aria-hidden="true"></i>
+            <b>Admin Portal</b>
+          </a>
+        </div>
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">:)</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="/"><b>HOME</b></a>
+                    </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/users"><b>View Patients</b></a>
+                </li>
+              
+              </ul>
+              <span class="navbar-text">
+                <a class="nav-link" aria-current="page" href="/logout"><b><i class="fa fa-sign-in" aria-hidden="true"></i> &nbsp; Logout</b></a>
+            </span>
+            </div>
+          </div>
+        <!-- </nav> -->
+    </nav>
+
+   
+
+    <!-- add new classroom  modal  -->
+    <div class="row justify-content-center">
+     <% for (let user of userArray) { %>
+      <div class="card border-info mb-3" style="max-width: 18rem;margin:17px;padding:0px">
+        <div class="card-header"><%=user.name%> (<%=user.type%>)  </div>
+        <div class="card-body text-dark">
+          <h5 class="card-title"><%=user.email%></h5>
+          <p class="card-text"><%=user.mobile%></p>
+          <!-- <img src="<%= user.profileImageUrl %> "> -->
+          <a href="/users/<%= user.id %>/bloodReports" class="btn btn-outline-primary">View Blood Report</a>
+          <a href="/users/<%= user.id %>/urineReports" class="btn btn-outline-primary">View Urine Report</a>
+          <a href="/users/<%= user.id %>/thyroidReports" class="btn btn-outline-primary">View Thyroid Report</a>
+          <a href="/users/<%= user.id %>/cholestrolReports" class="btn btn-outline-primary">View Cholestrol Report</a>
+           
+        </div>
+      </div>
+      <% } %> 
+    </div>
+  
+    
+    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+
+<script src="js/index.js"></script>
+  
+</body>
+
+</html>
