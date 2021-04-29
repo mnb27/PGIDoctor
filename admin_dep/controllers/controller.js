@@ -10,7 +10,6 @@ const lib = require("../globals/global.js");
 const PatientDetails = require('../models/PatientDetails');
 const DiagnosisForm = require('../models/DiagnosisForm');
 
-
 const getAllUsers = async (req, res, next) => {
     try {
         var user = firebase.auth().currentUser;
