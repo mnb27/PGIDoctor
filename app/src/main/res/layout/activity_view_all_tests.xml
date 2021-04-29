@@ -37,7 +37,7 @@
         android:text="Select Test To Continue"
         android:textColor="#3192F4"
         android:textStyle="bold"
-        android:textSize="24sp"
+        android:textSize="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -71,7 +71,6 @@
 
             android:layout_marginRight="40dp"
             android:text="Urine Test"
-
             android:textColor="#ffffff"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -80,6 +79,7 @@
         <android.widget.Button
             android:id="@+id/urinelatest"
             android:layout_width="100dp"
+            android:textSize="13dp"
             android:layout_height="wrap_content"
             android:text="Latest Report" />
 
@@ -114,6 +114,7 @@
         <android.widget.Button
             android:id="@+id/bloodlatest"
             android:layout_width="100dp"
+            android:textSize="13dp"
             android:layout_height="wrap_content"
             android:text="Latest Report" />
 
@@ -147,6 +148,7 @@
         <android.widget.Button
             android:id="@+id/thyroidlatest"
             android:layout_width="100dp"
+            android:textSize="13dp"
             android:layout_height="wrap_content"
             android:text="Latest Report" />
 
@@ -178,6 +180,7 @@
         <android.widget.Button
             android:id="@+id/cholestrollatest"
             android:layout_width="100dp"
+            android:textSize="13dp"
             android:layout_height="wrap_content"
             android:text="Latest Report" />
 

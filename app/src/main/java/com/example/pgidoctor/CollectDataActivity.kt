@@ -252,12 +252,13 @@ class CollectDataActivity : AppCompatActivity() {
                                     )
                                     val firestore = FirebaseFirestore.getInstance()
                                     firestore.collection("Users").document(auth.currentUser.uid).set(user)
-
                                 } else {
                                     Toast.makeText(this, "Unable to add member", Toast.LENGTH_LONG).show()
                                 }
                             }
-                        val intent = Intent(this, OpenActivity::class.java)
+
+                        val intent = Intent(this,ViewAllTestsActivity::class.java)
+                        intent.putExtra("previousDetails",patientDetails)
                         startActivity(intent)
                         finish()
                     } else {

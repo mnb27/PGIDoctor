@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -21,7 +22,7 @@ class ViewAllDiagnosisFormAdapter(var context: Context, var detailsList: Mutable
         var nameText: TextView = itemView.findViewById(R.id.nameOfTask)
         var date: TextView = itemView.findViewById(R.id.date)
         var viewMore: Button = itemView.findViewById(R.id.viewMore)
-
+        var editButton: ImageView = itemView.findViewById(R.id.editButton)
     }
     override fun onBindViewHolder(holder: ViewAllDiagnosisFormAdapter.DetailsViewHolder, position: Int) {
         var details = detailsList[position]
@@ -29,8 +30,10 @@ class ViewAllDiagnosisFormAdapter(var context: Context, var detailsList: Mutable
         holder.nameText.text = "Report # $pos"
 
         var datee = details.date
-        holder.date.text = "Taken On: " + datee.substring(6,8) + " / " + datee.substring(4,6) + " / " + datee.substring(0,4)
-
+        if (datee != null) {
+            holder.date.text = "Taken On: " + datee.substring(6,8) + " / " + datee.substring(4,6) + " / " + datee.substring(0,4)
+        }
+        
         holder.viewMore.text = "View Details"
 
         holder.viewMore.setOnClickListener {
@@ -38,8 +41,6 @@ class ViewAllDiagnosisFormAdapter(var context: Context, var detailsList: Mutable
             intent.putExtra("previousDetails",details)
             context.startActivity(intent)
         }
-
-
     }
 
     override fun onCreateViewHolder(

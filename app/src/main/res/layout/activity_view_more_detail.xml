@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#03A9F4"
     tools:context=".ViewMoreDetailActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#03A9F4">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,6 +26,7 @@
                 android:text="MRI"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
+                android:textSize="12dp"
                 app:layout_constraintHorizontal_bias="0.435"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -37,6 +39,7 @@
                 android:layout_marginTop="48dp"
                 android:text="BoneScan"
                 android:layout_margin="10dp"
+                android:textSize="12dp"
                 android:layout_weight="1"
                 app:layout_constraintHorizontal_bias="0.435"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -50,6 +53,7 @@
                 android:layout_marginTop="48dp"
                 android:text="PSMA PET"
                 android:layout_weight="1"
+                android:textSize="12dp"
                 android:layout_margin="10dp"
                 app:layout_constraintHorizontal_bias="0.435"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -69,13 +73,14 @@
             android:id="@+id/one"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:hint="Name">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
+                android:textSize="16dp"
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,13 +88,14 @@
             android:id="@+id/onee"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:hint="Hospital">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
+                android:textSize="16dp"
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,13 +103,14 @@
             android:id="@+id/oneee"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:hint="Unit">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
+                android:textSize="16dp"
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,13 +118,14 @@
             android:id="@+id/date"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:hint="Date Of Collection">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
+                android:textSize="16dp"
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,13 +134,14 @@
             android:id="@+id/two"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:hint="Weight">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
+                android:textSize="16dp"
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,13 +149,14 @@
             android:id="@+id/three"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:hint="Height">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
+                android:textSize="16dp"
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -156,13 +166,14 @@
             android:id="@+id/four"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:hint="H/O Smoking">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
+                android:textSize="16dp"
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,13 +181,14 @@
             android:id="@+id/five"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:hint="H/O Alcohole">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
+                android:textSize="16dp"
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -184,13 +196,14 @@
             android:id="@+id/six"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:hint="Comorbidities">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
+                android:textSize="16dp"
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -198,13 +211,14 @@
             android:id="@+id/seven"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:hint="Family H/O">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
+                android:textSize="16dp"
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -212,13 +226,14 @@
             android:id="@+id/eight"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:hint="Remarks">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
+                android:textSize="16dp"
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -226,13 +241,14 @@
             android:id="@+id/nine"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:hint="Medicines">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="false"
+                android:textSize="16dp"
                 android:focusable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 

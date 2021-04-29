@@ -23,7 +23,7 @@
             android:text="Add/View Reports"
             android:textColor="#3192F4"
             android:textStyle="bold"
-            android:textSize="24sp"
+            android:textSize="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,12 +45,13 @@
         <Button
             android:id="@+id/add_new_report"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="200dp"
             android:layout_marginRight="30dp"
             android:padding="20dp"
             android:text="Add new report"
+            android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -75,6 +76,7 @@
             android:layout_height="100dp"
             android:padding="20dp"
             android:text="View All Reports"
+            android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 

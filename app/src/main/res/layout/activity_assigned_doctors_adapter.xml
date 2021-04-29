@@ -42,7 +42,7 @@
                 android:padding="10dp"
                 android:text="Name"
                 android:textColor="#ffffff"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -55,7 +55,7 @@
                 android:padding="10dp"
                 android:text="Unit"
                 android:textColor="#ffffff"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/nameOfTask" />
 
@@ -68,7 +68,7 @@
                 android:padding="10dp"
                 android:text="Hospital"
                 android:textColor="#ffffff"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/unit" />
 

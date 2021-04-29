@@ -4,71 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFFFF"
+    android:background="#03A9F4"
     tools:context=".RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#03A9F4">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
-            android:background="#3192F4"
+            android:background="#0E4378"
             android:padding="5dp"
             android:text="Register User"
             android:textAlignment="center"
             android:textColor="#ffffff"
-            android:textSize="30sp" />
+            android:textSize="25dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:id="@+id/one"
             android:hint="@string/name"
             android:layout_margin="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="16dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:id="@+id/two"
             android:hint="@string/useremail"
             android:layout_margin="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="16dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:id="@+id/three"
             android:hint="@string/hospital"
             android:layout_margin="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="16dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:id="@+id/four"
             android:hint="@string/unit"
             android:layout_margin="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="16dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -81,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:text="Gender: "
                 android:layout_marginTop="10dp"
-                android:textSize="20sp"/>
+                android:textSize="16dp"/>
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,14 +96,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male"
-                    android:textSize="15dp"
+                    android:textSize="16dp"
                     />
                 <RadioButton
                     android:id="@+id/female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
-                    android:textSize="15dp"
+                    android:textSize="16dp"
                     />
             </RadioGroup>
         </LinearLayout>
@@ -110,7 +115,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_gravity="left|center_vertical"
                 android:layout_weight="1"
                 android:ellipsize="end"
@@ -121,14 +126,16 @@
                 android:layout_margin="10dp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"/>
             </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:id="@+id/pickDateBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="58dp"
                 android:layout_margin="12dp"
-                android:text="Pick Date" />
+                android:text="Pick Date"
+                android:textSize="12dp"/>
         </LinearLayout>
 
 
@@ -136,14 +143,15 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:id="@+id/nine"
             android:hint="@string/mobile"
             android:layout_margin="10dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:textSize="16dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -156,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:text="Category: "
                 android:layout_marginTop="10dp"
-                android:textSize="20sp"/>
+                android:textSize="16dp"/>
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -166,14 +174,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Doctor"
-                    android:textSize="15dp"
+                    android:textSize="16dp"
                     />
                 <RadioButton
                     android:id="@+id/compounderRadio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Para Medical Staff"
-                    android:textSize="15dp"
+                    android:textSize="16dp"
                     />
             </RadioGroup>
         </LinearLayout>
@@ -185,7 +193,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:text="Apply"
-            android:textSize="24sp"
+            android:textSize="16dp"
             android:layout_margin="10dp"
             />
 

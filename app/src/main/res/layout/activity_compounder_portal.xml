@@ -40,7 +40,7 @@
         android:letterSpacing="0.025"
         android:text="Staff Portal"
         android:textColor="@color/white"
-        android:textSize="28sp"
+        android:textSize="28dp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/backB"
         app:layout_constraintTop_toTopOf="parent" />
@@ -85,7 +85,7 @@
                 android:text="PGI Management"
                 android:textAllCaps="true"
                 android:textColor="#3192F4"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -97,7 +97,7 @@
                 android:layout_marginTop="4dp"
                 android:text="WORKSPACE"
                 android:textColor="@android:color/black"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -108,6 +108,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="8dp"
                 android:text="TODO LIST"
+                android:textSize="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -118,6 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="EDIT PROFILE"
+                android:textSize="12dp"
                 android:textColor="#3192F4"
                 app:layout_constraintBottom_toBottomOf="@+id/todoB"
                 app:layout_constraintStart_toEndOf="@+id/todoB" />
@@ -185,7 +187,7 @@
                     android:text="Add Patient"
                     android:textAllCaps="true"
                     android:textColor="#3192F4"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -232,7 +234,7 @@
                     android:text="View Patients"
                     android:textAllCaps="true"
                     android:textColor="#3192F4"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -292,7 +294,7 @@
                     android:text="Search"
                     android:textAllCaps="true"
                     android:textColor="#3192F4"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

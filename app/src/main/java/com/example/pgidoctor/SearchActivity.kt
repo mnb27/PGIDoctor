@@ -107,7 +107,9 @@ class SearchActivity : AppCompatActivity() {
                         list1.clear()
                         var nameentered = nameT.editText?.text.toString().toLowerCase()
                         for(item in list){
-                            if(item.name.toLowerCase().startsWith(nameentered)){
+                            if(nameentered.length>=2 && item.name.toLowerCase().contains(nameentered)){
+                                list1.add(item)
+                            }else if(item.name.toLowerCase().startsWith(nameentered)){
                                 list1.add(item)
                             }
                         }

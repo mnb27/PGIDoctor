@@ -33,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textSize="30dp"
             android:text="@string/full_name" />
 
     </LinearLayout>
@@ -69,6 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/username_title"
+                    android:textSize="16dp"
                     style="@style/TextBlackTitle"/>
 
                 <TextView
@@ -76,6 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/username"
+                    android:textSize="16dp"
                     style="@style/TextDescription"/>
 
             </LinearLayout>
@@ -104,6 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/phone_title"
+                    android:textSize="16dp"
                     style="@style/TextBlackTitle"/>
 
                 <TextView
@@ -111,6 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/phone"
+                    android:textSize="16dp"
                     style="@style/TextDescription"/>
 
             </LinearLayout>
@@ -139,6 +144,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/email_title"
+                    android:textSize="16dp"
                     style="@style/TextBlackTitle"/>
 
                 <TextView
@@ -146,6 +152,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/email"
+                    android:textSize="16dp"
                     style="@style/TextDescription"/>
 
             </LinearLayout>
@@ -174,6 +181,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/hospital_title"
+                    android:textSize="16dp"
                     style="@style/TextBlackTitle"/>
 
                 <TextView
@@ -181,6 +189,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/hospital_desc"
+                    android:textSize="16dp"
                     style="@style/TextDescription"/>
 
             </LinearLayout>
@@ -192,6 +201,7 @@
             android:layout_marginTop="30dp"
             android:layout_height="46dp"
             android:text="Edit Profile"
+            android:textSize="13dp"
             android:layout_gravity="center"
             tools:ignore="MissingConstraints"
             android:backgroundTint="@null"/>
@@ -202,6 +212,7 @@
             android:layout_height="56dp"
             android:text="Change Password"
             android:layout_gravity="center"
+            android:textSize="13dp"
             tools:ignore="MissingConstraints"
             android:backgroundTint="@null"/>
 

@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -36,13 +37,18 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
         var severe: Button = itemView.findViewById(R.id.severe)
         var profileImage: CircleImageView = itemView.findViewById(R.id.imageoftask)
 
+        var collaspse: Button = itemView.findViewById(R.id.down)
+        var carddown : CardView = itemView.findViewById(R.id.cardView)
+        var nameHead: TextView = itemView.findViewById(R.id.namehead)
+
     }
     override fun onBindViewHolder(holder: AssignedPatientsAdapter.DetailsViewHolder, position: Int) {
         var details = detailsList[position]
         holder.nameText.text = details.name
+        holder.nameHead.text = details.name
 
         var datee = details.date
-        holder.date.text = "Taken On: " + datee.substring(6,8) + " / " + datee.substring(4,6) + " / " + datee.substring(0,4)
+        holder.date.text = "Reg Date: " + datee.substring(6,8) + " / " + datee.substring(4,6) + " / " + datee.substring(0,4)
         holder.hospital.text = "Hospital: " + details.hospitalText
         holder.unit.text = "Unit: " + details.unitText
 
@@ -55,6 +61,17 @@ class AssignedPatientsAdapter(var context: Context, var detailsList: MutableList
             i.data = Uri.parse(url)
             context.startActivity(i)
         }
+
+        var clickCollaspse = true
+        holder.collaspse.setOnClickListener(View.OnClickListener {
+            clickCollaspse = if (clickCollaspse) {
+                holder.carddown.visibility = View.VISIBLE
+                false
+            } else {
+                holder.carddown.visibility = View.GONE
+                true
+            }
+        })
 
         var clickStarred = true
         var clickImportant = true

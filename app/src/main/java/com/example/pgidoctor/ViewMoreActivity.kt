@@ -22,8 +22,12 @@ class ViewMoreActivity : AppCompatActivity() {
         val hospital: TextInputLayout = findViewById(R.id.eight)
         val unit: TextInputLayout = findViewById(R.id.nine)
 
+        var datee = previousDetails?.date
+
         name.editText?.setText(previousDetails?.name)
-        date.editText?.setText(previousDetails?.date)
+        if (datee != null) {
+            date.editText?.setText(datee.substring(6,8) + " / " + datee.substring(4,6) + " / " + datee.substring(0,4))
+        }
         age.editText?.setText(previousDetails?.age)
         fatherName.editText?.setText(previousDetails?.fathername)
         crNo.editText?.setText(previousDetails?.crno)

@@ -12,22 +12,22 @@
 
     <!--collect data activity-->
     <string name="patient_name">Patient Name <font color='#FF0000'>*</font></string>
-    <string name="doc">Date of collection <font color='#FF0000'>*</font></string>
+    <string name="doc">Registration Date: <font color='#FF0000'>*</font></string>
     <string name="age">Age <font color='#FF0000'>*</font></string>
     <string name="village">Village <font color='#FF0000'>*</font></string>
     <string name="mobile">Mobile No. <font color='#FF0000'>*</font></string>
 
     <!--Profile activity-->
-    <string name="full_name">John Doe</string>
+    <string name="full_name">PGI Admin</string>
     <string name="back_to_home">Back to\nHome</string>
     <string name="username_title">Name</string>
-    <string name="username">doe007#</string>
+    <string name="username">admin007#</string>
     <string name="phone_title">Phone</string>
     <string name="phone">+000 00 000 000</string>
     <string name="hospital_title">Facility</string>
-    <string name="hospital_desc">Hospital, Unit</string>
+    <string name="hospital_desc">Hospital X, Unit Y</string>
     <string name="email_title">Email</string>
-    <string name="email">goldenperfecttv@gmail.com</string>
+    <string name="email">pgidoctor@gmail.com</string>
 
     <string-array name="Diagnosis">
         <item>blood</item>

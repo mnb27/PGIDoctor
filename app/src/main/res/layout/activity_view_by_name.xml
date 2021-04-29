@@ -17,7 +17,7 @@
         android:layout_marginTop="8dp"
         android:text="Booking Slots for "
         android:textColor="#3192F4"
-        android:textSize="24sp"
+        android:textSize="24dp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.401"
