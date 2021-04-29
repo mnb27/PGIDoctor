@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
             val register: CardView = findViewById(R.id.register)
             val adminPortal: CardView = findViewById(R.id.adminPortal)
             val PatientPortal: CardView = findViewById(R.id.patient_login)
+            val patientreg: CardView = findViewById(R.id.patientreg)
 
             PatientPortal.setOnClickListener {
                 val intent = Intent(this, PatientPortalActivity::class.java)
@@ -53,6 +54,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+        patientreg.setOnClickListener {
+            val intent = Intent(this, PatientRegistartionActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
     }
 }

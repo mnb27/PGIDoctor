@@ -230,15 +230,23 @@ class CollectDataActivity : AppCompatActivity() {
             val id1 = id.format(Date())
 
             val patientDetails = PatientDetails(nameText, fathernameText, datecollectedText, crnoText, mobileText, ageText, genderText,profileImageUrlText,hospitalText,unitText,id1,"","","","",emailText)
-            val firestore = FirebaseFirestore.getInstance().collection("PatientDetails")
+            val firestore = FirebaseFirestore.getInstance()
 
+            val auth1 = FirebaseAuth.getInstance()
 
-
-            firestore.document(id1).set(patientDetails)
+            firestore.collection("PatientDetails").document(id1).set(patientDetails)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "Successfully Saved", Toast.LENGTH_LONG).show()
-                        auth.createUserWithEmailAndPassword(emailText, "Test12345")
+
+                                        Toast.makeText(this, "Successfully Saved", Toast.LENGTH_LONG).show()
+                                        val intent = Intent(this,ViewAllTestsActivity::class.java)
+                                        intent.putExtra("previousDetails",patientDetails)
+                                        startActivity(intent)
+                                        finish()
+
+                                }
+
+                        /*auth1.createUserWithEmailAndPassword(emailText, "Test12345")
                             .addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
                                     val user = User(
@@ -251,17 +259,23 @@ class CollectDataActivity : AppCompatActivity() {
                                         unitText
                                     )
                                     val firestore = FirebaseFirestore.getInstance()
-                                    firestore.collection("Users").document(auth.currentUser.uid).set(user)
+                                    firestore.collection("Users").document(auth1.currentUser.uid).set(user)
+                                            .addOnSuccessListener {
+                                                auth1.signOut()
+
+                                                val intent = Intent(this,DoctorPortalActivity::class.java)
+                                                startActivity(intent)
+                                            }
                                 } else {
                                     Toast.makeText(this, "Unable to add member", Toast.LENGTH_LONG).show()
                                 }
                             }
 
-                        val intent = Intent(this,ViewAllTestsActivity::class.java)
+                        /*val intent = Intent(this,ViewAllTestsActivity::class.java)
                         intent.putExtra("previousDetails",patientDetails)
                         startActivity(intent)
-                        finish()
-                    } else {
+                        finish()*/*/
+                    else {
                         Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
                     }
                 }
@@ -379,5 +393,6 @@ class CollectDataActivity : AppCompatActivity() {
         }
 
     }
+
 
 }

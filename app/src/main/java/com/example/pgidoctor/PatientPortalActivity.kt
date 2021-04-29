@@ -57,7 +57,7 @@ class PatientPortalActivity : AppCompatActivity() {
                         mob = document.data.getValue("mobile").toString()
                         }
 //                    Log.d("amvfd",mob)
-                    fireStore.collection("PatientDetails").whereEqualTo("mobile",mob).get()
+                    fireStore.collection("PatientDetails").whereEqualTo("email",user_email).get()
                         .addOnSuccessListener { documents->
                             for(document in documents) {
                                 name = document.data.getValue("name").toString()

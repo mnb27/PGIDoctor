@@ -21,27 +21,25 @@ import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 
-class ViewPendingAdapter(var context: Context, var detailsList: MutableList<PendingList>):
-    RecyclerView.Adapter<ViewPendingAdapter.DetailsViewHolder>() {
+class ApprovePatientAdapter(var context: Context, var detailsList: MutableList<PatientDetails>):
+    RecyclerView.Adapter<ApprovePatientAdapter.DetailsViewHolder>() {
 
     class DetailsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var name: TextView = itemView.findViewById(R.id.name)
         var email: TextView = itemView.findViewById(R.id.email)
-        var type: TextView = itemView.findViewById(R.id.type)
         var hospital: TextView = itemView.findViewById(R.id.hospital)
         var unit: TextView = itemView.findViewById(R.id.unit)
         var approve: Button = itemView.findViewById(R.id.approve)
-        var disapprove: Button = itemView.findViewById(R.id.disapprove)
 
 
     }
-    override fun onBindViewHolder(holder: ViewPendingAdapter.DetailsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ApprovePatientAdapter.DetailsViewHolder, position: Int) {
         var details = detailsList[position]
         holder.name.text = "Name: " + details.name
         holder.email.text = "Email: " + details.email
-        holder.hospital.text = "Hospital: " + details.hospitalName
-        holder.unit.text = "Unit: " + details.unitName
-        holder.type.text = "Identity: " + details.category
+        holder.hospital.text = "Hospital: " + details.hospitalText
+        holder.unit.text = "Unit: " + details.unitText
+
 
         holder.approve.setOnClickListener {
             var Docref = FirebaseFirestore.getInstance().collection("PendingList").document(details.mobile);
@@ -53,40 +51,39 @@ class ViewPendingAdapter(var context: Context, var detailsList: MutableList<Pend
             holder.email.visibility = View.GONE
             holder.hospital.visibility = View.GONE
             holder.unit.visibility = View.GONE
-            holder.type.visibility = View.GONE
+
             holder.approve.visibility = View.GONE
-            holder.disapprove.visibility = View.GONE
 
             val auth = FirebaseAuth.getInstance()
             var email = details.email.toString()
             var password = "Test12345"
             var name = details.name
             var mobile = details.mobile
-            var hospital = details.hospitalName
-            var unit = details.unitName
-            var type = details.category
+            var hospital = details.hospitalText
+            var unit = details.unitText
+            val id = details.id
 
             var uid = auth.currentUser.uid
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                            val user = User(
-                                auth.currentUser?.uid!!,
-                                name,
-                                mobile,
-                                email,
-                                type,
-                                hospital,
-                                unit
-                            )
-                            val firestore = FirebaseFirestore.getInstance()
-                            firestore.collection("Users").document(auth.currentUser.uid).set(user)
+                        val user = User(
+                            auth.currentUser?.uid!!,
+                            name,
+                            mobile,
+                            email,
+                            "Patient",
+                            hospital,
+                            unit
+                        )
+                        val firestore = FirebaseFirestore.getInstance()
+                        firestore.collection("Users").document(auth.currentUser.uid).set(user)
+                            .addOnSuccessListener {
+                                firestore.collection("PendingPatientDetails").document(id).delete()
                                     .addOnSuccessListener {
-                                        firestore.collection("PendingList").document(mobile).delete()
-                                                .addOnSuccessListener {
-                                                    auth.signOut()
-                                                }
+                                        auth.signOut()
                                     }
+                            }
 
 
 
@@ -103,18 +100,7 @@ class ViewPendingAdapter(var context: Context, var detailsList: MutableList<Pend
             Toast.makeText(context, "Approved.", Toast.LENGTH_LONG).show()
         }
 
-        holder.disapprove.setOnClickListener {
-            val firestore = FirebaseFirestore.getInstance()
-            holder.name.visibility = View.GONE
-            holder.email.visibility = View.GONE
-            holder.hospital.visibility = View.GONE
-            holder.unit.visibility = View.GONE
-            holder.type.visibility = View.GONE
-            holder.approve.visibility = View.GONE
-            holder.disapprove.visibility = View.GONE
-            val mobile = details.mobile
-            firestore.collection("PendingList").document(mobile).delete()
-        }
+
 
 
     }
@@ -122,8 +108,8 @@ class ViewPendingAdapter(var context: Context, var detailsList: MutableList<Pend
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ViewPendingAdapter.DetailsViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.pending_list_item,parent,false)
+    ): ApprovePatientAdapter.DetailsViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.approve_patient_item,parent,false)
         return DetailsViewHolder(itemView)
     }
 
@@ -131,7 +117,7 @@ class ViewPendingAdapter(var context: Context, var detailsList: MutableList<Pend
         return detailsList.size
     }
 
-    fun setList(list: MutableList<PendingList>){
+    fun setList(list: MutableList<PatientDetails>){
         detailsList = list
         notifyDataSetChanged()
     }
