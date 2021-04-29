@@ -25,7 +25,7 @@ class SearchByNameActivity : AppCompatActivity() {
             }
 
             val intent = Intent(this,ViewByNameActivity::class.java)
-            intent.putExtra("name",name.editText?.text.toString())
+            intent.putExtra("name",name.editText?.text.toString().toLowerCase())
             startActivity(intent)
         }
     }

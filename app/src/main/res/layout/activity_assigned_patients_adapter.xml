@@ -32,8 +32,18 @@
                 app:civ_border_width="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.805"
-                app:layout_constraintStart_toEndOf="@+id/name_text"
                 tools:layout_editor_absoluteY="16dp" />
+
+            <Button
+                android:id="@+id/whatsapp"
+                android:layout_height="30dp"
+                android:background="@drawable/whatsapp"
+                android:layout_margin="18dp"
+                android:textColor="#ffffff"
+                app:backgroundTint="@null"
+                android:layout_width="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageoftask"/>
 
             <TextView
                 android:id="@+id/nameOfTask"
@@ -42,7 +52,7 @@
                 android:padding="10dp"
                 android:text="Name"
                 android:textColor="#ffffff"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -74,13 +84,13 @@
 
             <TextView
                 android:id="@+id/date"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:padding="10dp"
                 android:text="Date"
                 android:textColor="#ffffff"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hospital" />
 

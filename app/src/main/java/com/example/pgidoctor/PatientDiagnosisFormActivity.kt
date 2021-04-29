@@ -88,10 +88,23 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
+        var dateChoose = ""
+
         mPickTimeBtn.setOnClickListener {
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, day ->
+            var dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 // Display Selected date in TextView
-                date.getEditText()?.setText("" + day + " / " + (month+1).toString() + " / " + year)
+                date.editText?.setText("" + dayOfMonth + " / " + (monthOfYear.toInt()+1).toString() + " / " + year)
+                var daynumber = ""
+                var monthnumber = (monthOfYear+1).toString()
+                var correctMonth = monthOfYear + 1
+                if (correctMonth < 10) {
+                    monthnumber = "0$correctMonth"
+                }
+                if (dayOfMonth < 10) {
+                    daynumber = "0$dayOfMonth"
+                    dateChoose = year.toString() + monthnumber + daynumber
+                }
+                else {dateChoose = year.toString() + monthnumber + dayOfMonth.toString()}
             }, year, month, day)
             dpd.show()
         }
@@ -118,7 +131,7 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
                         var nameText = previousDetails?.name.toString()
                         var hospitalText = previousDetails?.hospitalText.toString()
                         var unitText = previousDetails?.unitText.toString()
-                        val dateText = date.editText?.text.toString()
+                        val dateText = dateChoose
                         var weightText = weight.editText?.text.toString()
                         var heightText = height.editText?.text.toString()
                         var smokingText = smoking.editText?.text.toString()

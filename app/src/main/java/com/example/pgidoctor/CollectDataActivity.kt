@@ -131,13 +131,31 @@ class CollectDataActivity : AppCompatActivity() {
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
+        var dateChoose = ""
+
         mPickTimeBtn.setOnClickListener {
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, day ->
+            var dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 // Display Selected date in TextView
-                date.getEditText()?.setText("" + day + " / " + (month.toInt() + 1).toString() + " / " + year)
+                date.editText?.setText("" + dayOfMonth + " / " + (monthOfYear.toInt()+1).toString() + " / " + year)
+                var daynumber = ""
+                var monthnumber = (monthOfYear+1).toString()
+                var correctMonth = monthOfYear + 1
+                if (correctMonth < 10) {
+                    monthnumber = "0$correctMonth"
+                }
+                if (dayOfMonth < 10) {
+                    daynumber = "0$dayOfMonth"
+                    dateChoose = year.toString() + monthnumber + daynumber
+                }
+                else {dateChoose = year.toString() + monthnumber + dayOfMonth.toString()}
             }, year, month, day)
+
+            val now = System.currentTimeMillis() - 1000
+            //dpd.datePicker.minDate = now
+            dpd.datePicker.maxDate = now + (1000*60*60*24*7)
             dpd.show()
         }
+
         //////end
 
         val name: TextInputLayout = findViewById(R.id.one)
@@ -161,7 +179,7 @@ class CollectDataActivity : AppCompatActivity() {
             var nameText = name.editText?.text.toString()
             var emailText = email.editText?.text.toString()
             var fathernameText = fathername.editText?.text.toString()
-            var datecollectedText = datecollected.editText?.text.toString()
+            var datecollectedText = dateChoose
             var crnoText = crno.editText?.text.toString()
             var mobileText = mobile.editText?.text.toString()
             var ageText = age.editText?.text.toString()
@@ -220,32 +238,30 @@ class CollectDataActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Successfully Saved", Toast.LENGTH_LONG).show()
-                        val intent = Intent(this, DoctorPortalActivity::class.java)
+                        auth.createUserWithEmailAndPassword(emailText, "Test12345")
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    val user = User(
+                                        auth.currentUser?.uid!!,
+                                        nameText,
+                                        mobileText,
+                                        emailText,
+                                        "Patient",
+                                        hospitalText,
+                                        unitText
+                                    )
+                                    val firestore = FirebaseFirestore.getInstance()
+                                    firestore.collection("Users").document(auth.currentUser.uid).set(user)
+
+                                } else {
+                                    Toast.makeText(this, "Unable to add member", Toast.LENGTH_LONG).show()
+                                }
+                            }
+                        val intent = Intent(this, OpenActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
                         Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
-                    }
-                }
-
-            auth.createUserWithEmailAndPassword(emailText, "Test12345")
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val user = User(
-                            auth.currentUser?.uid!!,
-                            nameText,
-                            mobileText,
-                            emailText,
-                            "Patient",
-                            hospitalText,
-                            unitText
-                        )
-                        val firestore = FirebaseFirestore.getInstance()
-                        firestore.collection("Users").document(auth.currentUser.uid).set(user)
-
-
-                    } else {
-                        Toast.makeText(this, "Unable to add member", Toast.LENGTH_LONG).show()
                     }
                 }
 

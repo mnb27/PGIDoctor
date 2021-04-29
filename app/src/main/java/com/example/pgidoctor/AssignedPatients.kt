@@ -60,7 +60,7 @@ class AssignedPatients : AppCompatActivity() {
                                 (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
                                 if(list.isEmpty()) {
                                     Toast.makeText(this,"No patient records",Toast.LENGTH_LONG).show()
-                                    val intent = Intent(this, MainActivity::class.java)
+                                    val intent = Intent(this, OpenActivity::class.java)
                                     startActivity(intent)
                                 }
                             }
@@ -84,7 +84,7 @@ class AssignedPatients : AppCompatActivity() {
 
             when (item!!.itemId) {
                 R.id.header1 -> {
-                    list.sortBy{det -> det.name}
+                    list.sortBy{det -> det.name.toLowerCase()}
                     (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
                 }
                 R.id.header2 -> {
