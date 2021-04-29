@@ -83,9 +83,13 @@ class ViewPendingAdapter(var context: Context, var detailsList: MutableList<Pend
                             firestore.collection("Users").document(auth.currentUser.uid).set(user)
                                     .addOnSuccessListener {
                                         firestore.collection("PendingList").document(mobile).delete()
-                                                .addOnSuccessListener {
-                                                    auth.signOut()
-                                                }
+                                                auth.signOut()
+                                                auth.signInWithEmailAndPassword("admin@gmail.com","Test12345")
+                                                    .addOnSuccessListener {
+                                                        val intent = Intent(context, AdminActivity::class.java)
+                                                        context.startActivity(intent)
+
+                                                    }
                                     }
 
 
