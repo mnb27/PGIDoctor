@@ -69,10 +69,26 @@ class ProfileActivity : AppCompatActivity() {
             .addOnCompleteListener(){
                 if(it.isSuccessful){
                     for(document in it.result!!){
-                        name.setText(""+document.data.getValue("name"));
-                        name1.setText("@"+document.data.getValue("name"));
-                        mobile.setText("+91 "+document.data.getValue("mobile"));
-                        addr.setText("Hospital: " + document.data.getValue("hospital") + ", Unit: " + document.data.getValue("unit"));
+
+                        var type = document.data.getValue("type")
+                        if(type=="Compounder" || type=="Doctor") {
+                            name.setText(""+document.data.getValue("name"));
+                            name1.setText("@"+document.data.getValue("name"));
+                            mobile.setText("+91 "+document.data.getValue("mobile"));
+                            addr.setText("Hospital: " + document.data.getValue("hospital") + ", Unit: " + document.data.getValue("unit"));
+                        }else {
+                            fireStore.collection("PatientDetails").whereEqualTo("email", user_email).get()
+                                    .addOnCompleteListener() {
+                                        if (it.isSuccessful) {
+                                            for (document in it.result!!) {
+                                                name.setText(""+document.data.getValue("name"));
+                                                name1.setText("@"+document.data.getValue("name"));
+                                                mobile.setText("+91 "+document.data.getValue("mobile"));
+                                                addr.setText("Hospital: " + document.data.getValue("hospitalText") + ", Unit: " + document.data.getValue("unitText"));
+                                            }
+                                        }
+                                    }
+                        }
                     }
                 }
             }

@@ -45,34 +45,38 @@ class AssignedDoctors : AppCompatActivity() {
         var unit = ""
         var hospital = ""
 
+        val user_email = auth.currentUser?.email
+
         auth.currentUser?.uid?.let {
-            fireStore.collection("Users").document(it).get()
-                .addOnSuccessListener { it ->
-                    if(it.exists()){
-                        hospital = it.getString("hospital").toString()
-                        unit = it.getString("unit").toString()
+            fireStore.collection("PatientDetails").whereEqualTo("email", user_email).get()
+                    .addOnCompleteListener() {
+                        if (it.isSuccessful) {
+                            for (document in it.result!!) {
+                                hospital = document.data.getValue("hospitalText").toString()
+                                unit = document.data.getValue("unitText").toString()
 
-                        fireStore.collection("Users").whereEqualTo("type","Doctor").whereEqualTo("hospital",hospital).whereEqualTo("unit",unit).get()
-                            .addOnSuccessListener { documents->
-                                for(document in documents) {
-                                    list.add(document.toObject(User::class.java))
-                                }
-                                list.sortBy { det->det.name }
-                                (recyclerView.adapter as AssignedDoctorsAdapter).notifyDataSetChanged()
-                                if(list.isEmpty()) {
-                                    Toast.makeText(this,"No Doctor records",Toast.LENGTH_LONG).show()
-                                    val intent = Intent(this, OpenActivity::class.java)
-                                    startActivity(intent)
-                                }
+                                fireStore.collection("Users").whereEqualTo("type", "Doctor").whereEqualTo("hospital", hospital).whereEqualTo("unit", unit).get()
+                                        .addOnSuccessListener { documents ->
+                                            for (document in documents) {
+                                                list.add(document.toObject(User::class.java))
+                                            }
+                                            list.sortBy { det -> det.name }
+                                            (recyclerView.adapter as AssignedDoctorsAdapter).notifyDataSetChanged()
+                                            if (list.isEmpty()) {
+                                                Toast.makeText(this, "No Doctor records", Toast.LENGTH_LONG).show()
+                                                val intent = Intent(this, OpenActivity::class.java)
+                                                startActivity(intent)
+                                            }
+                                        }
+                                        .addOnFailureListener {
+                                            Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+                                        }
                             }
-                            .addOnFailureListener{
-                                Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
-                            }
-
+                        }
                     }
-                }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+                    }
         }
-
-
     }
 }

@@ -30,10 +30,6 @@ class PatientRegistartionActivity : AppCompatActivity() {
 
         val emailText: TextInputLayout = findViewById(R.id.email_text)
         val passwordText: TextInputLayout = findViewById(R.id.password_text)
-        val hospitalText: TextInputLayout = findViewById(R.id.hospital)
-        val nameText: TextInputLayout = findViewById(R.id.name)
-        val unitText: TextInputLayout = findViewById(R.id.unit)
-        val mobileText: TextInputLayout = findViewById(R.id.mobile)
 
         val loginButton: Button = findViewById(R.id.login_button)
 
@@ -43,36 +39,12 @@ class PatientRegistartionActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             val email = emailText.editText?.text.toString()
             val password = passwordText.editText?.text.toString()
-            val name = nameText.editText?.text.toString()
-            val hospital = hospitalText.editText?.text.toString()
-            val unit = unitText.editText?.text.toString()
-            val mobile = mobileText.editText?.text.toString()
 
             emailText.error = null
             passwordText.error = null
-            nameText.error = null
-            unitText.error = null
-            hospitalText.error = null
-            mobileText.error = null
 
             if (TextUtils.isEmpty(email)) {
                 emailText.error = "Email is required"
-                return@setOnClickListener
-            }
-            if (TextUtils.isEmpty(name)) {
-                nameText.error = "Name is required"
-                return@setOnClickListener
-            }
-            if (TextUtils.isEmpty(hospital)) {
-                hospitalText.error = "Hospital is required"
-                return@setOnClickListener
-            }
-            if (TextUtils.isEmpty(unit)) {
-                unitText.error = "Unit is required"
-                return@setOnClickListener
-            }
-            if (TextUtils.isEmpty(mobile)) {
-                mobileText.error = "Mobile is required"
                 return@setOnClickListener
             }
 
@@ -90,33 +62,31 @@ class PatientRegistartionActivity : AppCompatActivity() {
 
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
+                    .addOnCompleteListener { task ->
 
-                    if(task.isSuccessful) {
+                        if(task.isSuccessful) {
 
-                        val user = User(
-                            auth.currentUser?.uid!!,
-                                name,
-                                mobile,
-                                email,
-                                "Patient",
-                                hospital,
-                                unit
-                        )
-                        val firestore = FirebaseFirestore.getInstance().collection("Users")
-                        firestore.document(auth.currentUser?.uid!!).set(user)
-                            .addOnSuccessListener {
-                                val intent = Intent(this, PatientPortalActivity::class.java)
-                                startActivity(intent)
-                                finish()
-                            }
+                            val user = User(
+                                    auth.currentUser?.uid!!,
+                                    "", "",
+                                    email,
+                                    "Patient",
+                                    "",
+                                    "")
+                            val firestore = FirebaseFirestore.getInstance().collection("Users")
+                            firestore.document(auth.currentUser?.uid!!).set(user)
+                                    .addOnSuccessListener {
+                                        val intent = Intent(this, PatientPortalActivity::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    }
 
+                        }
+                        else {
+                            Toast.makeText(this, "Something went wrong. Please try again.", Toast.LENGTH_LONG).show()
+                            Log.d("Error", task.exception.toString())
+                        }
                     }
-                    else {
-                        Toast.makeText(this, "Something went wrong. Please try again.", Toast.LENGTH_LONG).show()
-                        Log.d("Error", task.exception.toString())
-                    }
-                }
         }
     }
 }
