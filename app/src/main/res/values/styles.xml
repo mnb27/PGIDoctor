@@ -10,7 +10,7 @@
 
     <style name="TextBlackTitle">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">#000000</item>
+        <item name="android:textColor">#3192F4</item>
 <!--        <item name="android:fontFamily">@font/atomic_age</item>-->
     </style>
 
@@ -21,7 +21,7 @@
 
     <style name="TextButton">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">#3192F4</item>
 <!--        <item name="android:fontFamily">@font/atomic_age</item>-->
     </style>
 
