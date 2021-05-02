@@ -62,31 +62,31 @@ class PatientRegistartionActivity : AppCompatActivity() {
 
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
+                    .addOnCompleteListener { task ->
 
-                    if(task.isSuccessful) {
+                        if(task.isSuccessful) {
 
-                        val user = User(
-                            auth.currentUser?.uid!!,
-                            "", "",
-                            email,
-                            "Patient",
-                            "",
-                            "")
-                        val firestore = FirebaseFirestore.getInstance().collection("Users")
-                        firestore.document(auth.currentUser?.uid!!).set(user)
-                            .addOnSuccessListener {
-                                val intent = Intent(this, PatientPortalActivity::class.java)
-                                startActivity(intent)
-                                finish()
-                            }
+                            val user = User(
+                                    auth.currentUser?.uid!!,
+                                    "", "",
+                                    email,
+                                    "Patient",
+                                    "",
+                                    "")
+                            val firestore = FirebaseFirestore.getInstance().collection("Users")
+                            firestore.document(auth.currentUser?.uid!!).set(user)
+                                    .addOnSuccessListener {
+                                        val intent = Intent(this, PatientPortalActivity::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    }
 
+                        }
+                        else {
+                            Toast.makeText(this, "Something went wrong. Please try again.", Toast.LENGTH_LONG).show()
+                            Log.d("Error", task.exception.toString())
+                        }
                     }
-                    else {
-                        Toast.makeText(this, "Something went wrong. Please try again.", Toast.LENGTH_LONG).show()
-                        Log.d("Error", task.exception.toString())
-                    }
-                }
         }
     }
 }
