@@ -44,11 +44,13 @@ const getAllUsers = async (req, res, next) => {
             res.status(404).send('No student record found');
         }else {
             data.forEach(doc => {
+                var datee = doc.data().date
+                var bookdate = datee.substring(0,2) + "-" + datee.substring(2,4) + "-" + datee.substring(4,8)
                 if(doc.data().hospitalText == hospitalText && doc.data().unitText == unitText){
                     const user = new PatientDetails(
                         doc.data().age,
                         doc.data().crno,
-                        doc.data().date,
+                        bookdate,
                         doc.data().email,
                         doc.data().fathername,
                         doc.data().gender,

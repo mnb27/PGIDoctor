@@ -1,5 +1,5 @@
 class PatientDetails {
-    constructor(age,crno,date,email,fathername,gender,hospitalText,id,isImportant,isSevere,isStarred,mobile,name,profileImageUrl,unitText ) {
+    constructor(age,crno,date,email,fathername,gender,hospitalText,id,isImportant,isSevere,isStarred,isNearby,mobile,name,profileImageUrl,unitText ) {
             this.id = id;
             this.email = email;
             this.name = name;
@@ -14,7 +14,7 @@ class PatientDetails {
             this.isImportant = isImportant
             this.isSevere = isSevere
             this.isStarred = isStarred
-            this.isSevere = isSevere
+            this.isNearby = isNearby
             this.unitText = unitText
             this.profileImageUrl = profileImageUrl
     }
