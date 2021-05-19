@@ -133,11 +133,13 @@ app.get("/users",async (req,res) => {
         res.status(404).send('No student record found');
     }else {
         data.forEach(doc => {
+            var datee = doc.data().date
+            var bookdate = datee.substring(6,8) + "-" + datee.substring(4,6) + "-" + datee.substring(0,4)
             if(doc.data().hospitalText == hospitalText && doc.data().unitText == unitText){
                 const user = new PatientDetails(
                     doc.data().age,
                     doc.data().crno,
-                    doc.data().date,
+                    bookdate,
                     doc.data().email,
                     doc.data().fathername,
                     doc.data().gender,
@@ -146,6 +148,7 @@ app.get("/users",async (req,res) => {
                     doc.data().isImportant,
                     doc.data().isSevere,
                     doc.data().isStarred,
+                    doc.data().isNearby,
                     doc.data().mobile,
                     doc.data().name,
                     doc.data().profileImageUrl,
@@ -180,6 +183,8 @@ app.get('/users/:id/bloodReports',async (req,res) => {
     const data = await bloodReports.get()
     const ReportsArray = [];
     data.forEach(doc => {
+        var datee = doc.data().date
+        var bookdate = datee.substring(6,8) + "-" + datee.substring(4,6) + "-" + datee.substring(0,4)
         if(doc.data().type == "blood"){
             const form = new DiagnosisForm(
                 doc.id,
@@ -187,7 +192,7 @@ app.get('/users/:id/bloodReports',async (req,res) => {
                 doc.data().alcohole,
                 doc.data().bonescan,
                 doc.data().comorbidities,
-                doc.data().date,
+                bookdate,
                 doc.data().doctorRemarks,
                 doc.data().familyho,
                 doc.data().height,
@@ -217,6 +222,8 @@ app.get('/users/:id/urineReports',async (req,res) => {
     const data = await bloodReports.get()
     const ReportsArray = [];
     data.forEach(doc => {
+        var datee = doc.data().date
+        var bookdate = datee.substring(6,8) + "-" + datee.substring(4,6) + "-" + datee.substring(0,4)
         if(doc.data().type == "urine"){
             const form = new DiagnosisForm(
                 doc.id,
@@ -224,7 +231,7 @@ app.get('/users/:id/urineReports',async (req,res) => {
                 doc.data().alcohole,
                 doc.data().bonescan,
                 doc.data().comorbidities,
-                doc.data().date,
+                bookdate,
                 doc.data().doctorRemarks,
                 doc.data().familyho,
                 doc.data().height,
@@ -254,6 +261,8 @@ app.get('/users/:id/thyroidReports',async (req,res) => {
     const data = await bloodReports.get()
     const ReportsArray = [];
     data.forEach(doc => {
+        var datee = doc.data().date
+        var bookdate = datee.substring(6,8) + "-" + datee.substring(4,6) + "-" + datee.substring(0,4)
         if(doc.data().type == "thyroid"){
             const form = new DiagnosisForm(
                 doc.id,
@@ -261,7 +270,7 @@ app.get('/users/:id/thyroidReports',async (req,res) => {
                 doc.data().alcohole,
                 doc.data().bonescan,
                 doc.data().comorbidities,
-                doc.data().date,
+                bookdate,
                 doc.data().doctorRemarks,
                 doc.data().familyho,
                 doc.data().height,
@@ -291,6 +300,8 @@ app.get('/users/:id/cholestrolReports',async (req,res) => {
     const data = await bloodReports.get()
     const ReportsArray = [];
     data.forEach(doc => {
+        var datee = doc.data().date
+        var bookdate = datee.substring(6,8) + "-" + datee.substring(4,6) + "-" + datee.substring(0,4)
         if(doc.data().type == "cholestrol"){
             const form = new DiagnosisForm(
                 doc.id,
@@ -298,7 +309,7 @@ app.get('/users/:id/cholestrolReports',async (req,res) => {
                 doc.data().alcohole,
                 doc.data().bonescan,
                 doc.data().comorbidities,
-                doc.data().date,
+                bookdate,
                 doc.data().doctorRemarks,
                 doc.data().familyho,
                 doc.data().height,
@@ -338,11 +349,13 @@ app.get('/searchedUser',async (req,res) => {
         res.status(404).send('No student record found');
     }else {
         data.forEach(doc => {
+            var datee = doc.data().date
+            var bookdate = datee.substring(6,8) + "-" + datee.substring(4,6) + "-" + datee.substring(0,4)
             if(doc.data().name.includes(name)){
                 const user = new PatientDetails(
                     doc.data().age,
                     doc.data().crno,
-                    doc.data().date,
+                    bookdate,
                     doc.data().email,
                     doc.data().fathername,
                     doc.data().gender,
@@ -351,6 +364,7 @@ app.get('/searchedUser',async (req,res) => {
                     doc.data().isImportant,
                     doc.data().isSevere,
                     doc.data().isStarred,
+                    doc.data().isNearby,
                     doc.data().mobile,
                     doc.data().name,
                     doc.data().profileImageUrl,
@@ -399,11 +413,13 @@ app.get('/importantUser', async (req,res) => {
         res.status(404).send('No student record found');
     }else {
         data.forEach(doc => {
+            var datee = doc.data().date
+            var bookdate = datee.substring(6,8) + "-" + datee.substring(4,6) + "-" + datee.substring(0,4)
             if(doc.data().hospitalText == hospitalText && doc.data().unitText == unitText && doc.data().isimportant == "yes"){
                 const user = new PatientDetails(
                     doc.data().age,
                     doc.data().crno,
-                    doc.data().date,
+                    bookdate,
                     doc.data().email,
                     doc.data().fathername,
                     doc.data().gender,
@@ -412,6 +428,7 @@ app.get('/importantUser', async (req,res) => {
                     doc.data().isImportant,
                     doc.data().isSevere,
                     doc.data().isStarred,
+                    doc.data().isNearby,
                     doc.data().mobile,
                     doc.data().name,
                     doc.data().profileImageUrl,
@@ -437,6 +454,7 @@ app.get('/importantUser', async (req,res) => {
     res.status(400).send(error.message);
 }
 })
+
 app.get('/starredUser', async (req,res) => {
   try {
     const sessionCookie= req.cookies.session;
@@ -472,11 +490,13 @@ app.get('/starredUser', async (req,res) => {
         res.status(404).send('No student record found');
     }else {
         data.forEach(doc => {
+            var datee = doc.data().date
+            var bookdate = datee.substring(6,8) + "-" + datee.substring(4,6) + "-" + datee.substring(0,4)
             if(doc.data().hospitalText == hospitalText && doc.data().unitText == unitText && doc.data().isstarred == "yes"){
                 const user = new PatientDetails(
                     doc.data().age,
                     doc.data().crno,
-                    doc.data().date,
+                    bookdate,
                     doc.data().email,
                     doc.data().fathername,
                     doc.data().gender,
@@ -485,6 +505,7 @@ app.get('/starredUser', async (req,res) => {
                     doc.data().isImportant,
                     doc.data().isSevere,
                     doc.data().isStarred,
+                    doc.data().isNearby,
                     doc.data().mobile,
                     doc.data().name,
                     doc.data().profileImageUrl,
@@ -510,6 +531,162 @@ app.get('/starredUser', async (req,res) => {
     res.status(400).send(error.message);
 }
 })
+
+
+app.get('/severeUser', async (req,res) => {
+    try {
+      const sessionCookie= req.cookies.session;
+      const userDetail = await firestore.collection('Users');
+          const data1 = await userDetail.get();
+          const users = await firestore.collection('PatientDetails');
+      const data = await users.get();
+      var email = ""
+      var hospitalText=""
+      var unitText = ""
+          //console.log(token);
+          // idToken comes from the client app
+          admin.auth().verifySessionCookie(
+              sessionCookie, true /** checkRevoked */)
+              .then((decodedClaims) => {
+                  //console.log(decodedClaims);
+  
+                  email = decodedClaims.email
+                  data1.forEach(doc => {
+              if(email == doc.data().email){
+                  hospitalText = doc.data().hospital
+                  unitText = doc.data().unit
+                  
+              }
+              
+  
+          })
+          //res.send(hospitalText)
+     
+      
+      const userArray = [];
+      if(data.empty) {
+          res.status(404).send('No student record found');
+      }else {
+          data.forEach(doc => {
+              var datee = doc.data().date
+              var bookdate = datee.substring(6,8) + "-" + datee.substring(4,6) + "-" + datee.substring(0,4)
+              if(doc.data().hospitalText == hospitalText && doc.data().unitText == unitText && doc.data().issevere == "yes"){
+                  const user = new PatientDetails(
+                      doc.data().age,
+                      doc.data().crno,
+                      bookdate,
+                      doc.data().email,
+                      doc.data().fathername,
+                      doc.data().gender,
+                      doc.data().hospitalText,
+                      doc.data().id,
+                      doc.data().isImportant,
+                      doc.data().isSevere,
+                      doc.data().isStarred,
+                      doc.data().isNearby,
+                      doc.data().mobile,
+                      doc.data().name,
+                      doc.data().profileImageUrl,
+                      doc.data().unitText
+                  );
+                  userArray.push(user);
+              }    
+          });
+          res.render("../views/users.ejs",{userArray})
+      }
+                  
+              })
+              .catch(error => {
+                // Session cookie is unavailable or invalid. Force user to login.
+                console.log(error);
+                res.redirect('/login');
+              });   
+  
+  
+      
+          
+  } catch (error) {
+      res.status(400).send(error.message);
+  }
+  })
+
+  app.get('/nearbyUser', async (req,res) => {
+    try {
+      const sessionCookie= req.cookies.session;
+      const userDetail = await firestore.collection('Users');
+          const data1 = await userDetail.get();
+          const users = await firestore.collection('PatientDetails');
+      const data = await users.get();
+      var email = ""
+      var hospitalText=""
+      var unitText = ""
+          //console.log(token);
+          // idToken comes from the client app
+          admin.auth().verifySessionCookie(
+              sessionCookie, true /** checkRevoked */)
+              .then((decodedClaims) => {
+                  //console.log(decodedClaims);
+  
+                  email = decodedClaims.email
+                  data1.forEach(doc => {
+              if(email == doc.data().email){
+                  hospitalText = doc.data().hospital
+                  unitText = doc.data().unit
+                  
+              }
+              
+  
+          })
+          //res.send(hospitalText)
+     
+      
+      const userArray = [];
+      if(data.empty) {
+          res.status(404).send('No student record found');
+      }else {
+          data.forEach(doc => {
+              var datee = doc.data().date
+              var bookdate = datee.substring(6,8) + "-" + datee.substring(4,6) + "-" + datee.substring(0,4)
+              if(doc.data().hospitalText == hospitalText && doc.data().unitText == unitText && doc.data().isnearby == "yes"){
+                  const user = new PatientDetails(
+                      doc.data().age,
+                      doc.data().crno,
+                      bookdate,
+                      doc.data().email,
+                      doc.data().fathername,
+                      doc.data().gender,
+                      doc.data().hospitalText,
+                      doc.data().id,
+                      doc.data().isImportant,
+                      doc.data().isSevere,
+                      doc.data().isStarred,
+                      doc.data().isNearby,
+                      doc.data().mobile,
+                      doc.data().name,
+                      doc.data().profileImageUrl,
+                      doc.data().unitText
+                  );
+                  userArray.push(user);
+              }    
+          });
+          res.render("../views/users.ejs",{userArray})
+      }
+                  
+              })
+              .catch(error => {
+                // Session cookie is unavailable or invalid. Force user to login.
+                console.log(error);
+                res.redirect('/login');
+              });   
+  
+  
+      
+          
+  } catch (error) {
+      res.status(400).send(error.message);
+  }
+  })
+
 
 app.listen(PORT, () => {
   console.log(`Listening on http://localhost:${PORT}`);

@@ -45,9 +45,10 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="/users">View Records</a></li>
-                            <li class="scroll-to-section"><a href="/logout"><b><i class="fa fa-sign-in" aria-hidden="true"></i> &nbsp; Logout</b></a></li>
+                            <li class="scroll-to-section"><a href="/" class="active"><i class="fa fa-home" aria-hidden="true"></i> &nbsp;Home</a></li>
+                            <li class="scroll-to-section"><a href="/users"><i class="fa fa-eye" aria-hidden="true"></i> &nbsp;View Records</a></li>
+                            <li class="scroll-to-section"><a href="/search"><i class="fa fa-search" aria-hidden="true"></i> &nbsp;Search Record</a></li>
+                            <li class="scroll-to-section"><a href="/sessionLogout"><b><i class="fa fa-sign-in" aria-hidden="true"></i> &nbsp; Logout</b></a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -72,7 +73,8 @@
                     <div class="left-text col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
                         <h1><strong>Doctor Portal</strong></h1>
                         <p>Postgraduate Institute of Medical Education and Research is a premier medical and research institution in Chandigarh, India, consistently ranked in the top among the institutes for medical education in India and is an 'Institute of National Importance'.</p>
-                        <a href="/users" class="main-button-slider">Find Out More</a>
+                        <a href="#addfacility" class="main-button-slider">Find Out More</a> &nbsp; &nbsp;
+                        <a href="https://github.com/mnb27/PGIDoctor/releases/download/APP/PGIDoctor.apk" class="main-button-slider"><i class="fa fa-android" aria-hidden="true"></i>GET APP</a>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
                         <img src="../assets/images/consultation.png" class="rounded img-fluid d-block mx-auto" alt="First Vector Graphic">
@@ -85,48 +87,68 @@
     <!-- ***** Welcome Area End ***** -->
 </nav>
 
-    <!-- ***** Features Small Start ***** -->
-    <section class="section" id="services">
-        <div class="container">
-            <div class="row">
-                <div class="owl-carousel owl-theme">
-                    <div class="item service-item">
-                        <div class="icon">
-                            <i><img src="../img/doctor.svg" alt=""></i>
-                        </div>
-                        <h5 class="service-title">Infocard I</h5>
-                        <p></p>
-                        <a href="#" class="main-button">Read More</a>
-                    </div>
-                    <div class="item service-item">
-                        <div class="icon">
-                            <i><img src="../assets/images/consultation.png" alt=""></i>
-                        </div>
-                        <h5 class="service-title">Infocard II</h5>
-                        <p></p>
-                        <a href="#" class="main-button">Discover More</a>
-                    </div>
-                    <div class="item service-item">
-                        <div class="icon">
-                            <i><img src="../img/doctor.svg" alt=""></i>
-                        </div>
-                        <h5 class="service-title">Infocard III</h5>
-                        <p></p>
-                        <a href="#" class="main-button">More Detail</a>
-                    </div>
-                    <div class="item service-item">
-                        <div class="icon">
-                            <i><img src="../assets/images/consultation.png" alt=""></i>
-                        </div>
-                        <h5 class="service-title">Infocard IV</h5>
-                        <p></p>
-                        <a href="#" class="main-button">Read More</a>
-                    </div>
-                </div>
+<section class="h-100" id="addfacility">
+    <div class="position-absolute h-100 w-100" style="
+            z-index: -1;
+            /* background-image: url('images/back.jpg'); */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        "></div>
+
+        <div class="container h-100 py-5">
+          <div class="d-flex justify-content-center align-items-center mb-3">
+            <div class="col-sm-8 text-center">
+                
+              <h5>Welcome to Doctor Portal</h5>
+              <h1 class="font-weight-bold">
+                  POST • GRADUATE • INSTITUTE 
+              </h1>
+              <h5 class="text-muted font-weight-normal">
+                  View Patient Records
+              </h5>
+              <div class="">
+                  <div class="btn btn btn-info">
+                      <!-- Subscribe now -->
+                  </div>
+                  <div class="btn btn ml-3 btn-outline-info">
+                      <!-- Learn more -->
+                  </div>
+              </div>
+            </div>
             </div>
         </div>
-    </section>
-    <!-- ***** Features Small End ***** -->
+</div>
+
+
+<div class="col d-flex justify-content-center">
+
+    <!-- spacing -->
+    <div class="mt-4" />
+
+    <a href="users" class="custom-card">
+      <div class="card" style="width: 15rem; display: inline-block">
+        <img class="card-img-top" src="../img/folders.svg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">PATIENT DATA</h5>
+          <p class="card-text">View all patient records</p>
+        </div>
+      </div>
+    </a>
+    &nbsp; &nbsp; &nbsp;
+    <a href="search" class="custom-card">
+      <div class="card" style="width: 15rem; display: inline-block">
+        <img class="card-img-top" src="../img/data.svg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">SEARCH PATIENT</h5>
+          <p class="card-text">Search a particular patient</p>
+        </div>
+      </div>
+    </a>
+</div>  
+</section>
+
     
     <!-- jQuery -->
     <script src="../assets/js/jquery-2.1.0.min.js"></script>

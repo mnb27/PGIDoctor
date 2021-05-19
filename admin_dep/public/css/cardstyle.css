@@ -1,0 +1,117 @@
+/*   #c500d6
+     #24203b 
+  */
+
+  /* @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,500;0,700;1,100&display=swap"); */
+  
+  .flip-container{
+    border: 2px solid transparent;
+    width: 300px;
+    height: 400px;
+    background-color:transparent;
+    border-radius: 10px;
+    perspective: 1000px;
+  }
+  
+  /* Flip Inner Container */
+  .flip-inner-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+  /* add hover to Flip horizonally */
+  .flip-container:hover .flip-inner-container{
+    transform: rotateY(180deg);
+  }
+  
+  /* position front and back */
+  
+  .flip-front,
+  .flip-back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    /* background-color: green; */
+    border-radius: 10px;
+    box-shadow: -1px 2px 13px 0px rgba(226, 216, 216, 0.75);
+  }
+  
+  /* flip  front from Start Here */
+  .flip-front{
+   background:#6187c0  ;
+  color: #ffffff;
+  padding: 20px;
+  }
+  
+  .flip-front .profile-image{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 150px;
+    height: 150px;  
+    border-radius: 50%;
+    border: 4px solid #8290e2;
+    margin: auto;
+  }
+  
+  .flip-front h3{
+    margin-top: 5px;
+    font-weight: 150;
+  }
+  
+  .flip-front h6{
+    font-weight: 200;
+    margin: 5px 0;
+    text-transform: uppercase;
+  }
+  .flip-front h5{
+    text-transform: uppercase;
+    margin: 30px 0 5px 0;
+  }
+  
+  .flip-front .skills{
+    border-top: 1px solid #ffffff;
+    font-size: 12px;
+    font-weight: 400;
+    align-items: left;
+    text-align: left;
+  }
+  
+  .flip-front .skills span{
+    color: #ffffff;
+    padding-top: 2px 5px;
+    margin-bottom: 10px;
+  }
+  
+  
+  /* flip back from Start Here */
+  .flip-back{
+    background:#eff0f1  ;
+    transform: rotateY(180deg);
+  
+  }
+  
+  .flip-back h2{
+    margin-top: 100px;
+  }
+  
+  .flip-back .btn{
+  display: block;
+  padding: 10px 20px;
+  background: #2c94e9;
+  text-decoration: none;
+  color: #ffffff;
+  margin: 10px;
+  border-radius: 20px;
+  
+  }
+  
+  .flip-back .btn:hover{
+    background:  #126bf0;
+    border: 2px solid #5d4ac7;
+  }
+  
