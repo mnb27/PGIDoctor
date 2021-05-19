@@ -73,6 +73,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/date" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/textonly"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Remarks not Given"
+
+                android:textColor="#ffffff"
+                android:background="#EE0038"
+                android:layout_margin="10dp"
+                android:textSize="12dp"
+                app:layout_constraintStart_toEndOf="@id/viewMore"
+                app:layout_constraintTop_toBottomOf="@id/date"
+                android:visibility="invisible"/>
+
             <ImageView
                 android:id="@+id/editButton"
                 android:layout_width="30dp"

@@ -18,5 +18,6 @@ data class PatientDiagnosisDetails(
     var psmapet: String = "",
     var type :String = "",
     var doctorRemarks :String = "",
-    var medicines : String = ""
+    var medicines : String = "",
+    var id: String = ""
 ): Serializable

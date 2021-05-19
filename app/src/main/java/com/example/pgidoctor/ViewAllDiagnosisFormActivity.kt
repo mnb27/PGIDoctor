@@ -50,14 +50,14 @@ class ViewAllDiagnosisFormActivity : AppCompatActivity() {
         val text: TextView = findViewById(R.id.textView4)
         text.text = "Diagnosis Reports For " + previousDetails?.name
 
-        val id = previousDetails?.id
+        val id = previousDetails?.id.toString()
 
         var list: MutableList<PatientDiagnosisDetails> = mutableListOf()
 
 
         recyclerView = findViewById(R.id.recyclerView)
 
-        viewAllDiagnosisFormAdapter = ViewAllDiagnosisFormAdapter(this,list)
+        viewAllDiagnosisFormAdapter = ViewAllDiagnosisFormAdapter(this,list,id)
 
 
         recyclerView.adapter = viewAllDiagnosisFormAdapter

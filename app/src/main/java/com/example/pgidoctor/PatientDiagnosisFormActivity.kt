@@ -19,6 +19,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import kotlinx.android.synthetic.main.activity_patient_diagnosis_form.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -144,6 +145,9 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
                         var remarksText = remarks.editText?.text.toString()
                         var medicinesText = medicines.editText?.text.toString()
 
+                        var id2 = SimpleDateFormat("ddMMyyyyhh:mm:ss")
+                        val id1 = id2.format(Date())
+
                         val patientDetails = PatientDiagnosisDetails(
                             nameText,
                             hospitalText,
@@ -160,13 +164,14 @@ class PatientDiagnosisFormActivity : AppCompatActivity() {
                             psmapetText,
                             ttesttype!!,
                             remarksText,
-                            medicinesText
+                            medicinesText,
+                                id1
                         )
                         val firestore = FirebaseFirestore.getInstance().collection("PatientDetails")
 
 
                         if (id != null) {
-                            firestore.document(id).collection("DiagnosisForm").document().set(patientDetails)
+                            firestore.document(id).collection("DiagnosisForm").document(id1).set(patientDetails)
                                 .addOnCompleteListener { task ->
                                     if (task.isSuccessful) {
                                         Toast.makeText(this, "Successfully Saved", Toast.LENGTH_LONG).show()
