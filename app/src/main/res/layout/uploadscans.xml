@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#C6D5E4">
+
+    <LinearLayout
+        android:id="@+id/mriupload"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/starred"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:text="MRI Scan :"
+            app:backgroundTint="@null"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/mricamera"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/camera"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            app:backgroundTint="@null"
+            android:layout_width="40dp" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="30dp"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:text="OR"
+            app:backgroundTint="@null"
+            android:layout_width="wrap_content" />
+
+        <Button
+            android:id="@+id/mrifolder"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/folder"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            app:backgroundTint="@null"
+            android:layout_width="40dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bsupload"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/mriupload"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/as"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:text="Bone Scan :"
+            app:backgroundTint="@null"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/bonescancamera"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/camera"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            app:backgroundTint="@null"
+            android:layout_width="40dp" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="30dp"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:text="OR"
+            app:backgroundTint="@null"
+            android:layout_width="wrap_content" />
+
+        <Button
+            android:id="@+id/bonescanfolder"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/folder"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            app:backgroundTint="@null"
+            android:layout_width="40dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/psmaupload"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/bsupload"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/asa"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:text="PSMA PET :"
+            app:backgroundTint="@null"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/psmacamera"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/camera"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            app:backgroundTint="@null"
+            android:layout_width="40dp" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="30dp"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:text="OR"
+            app:backgroundTint="@null"
+            android:layout_width="wrap_content" />
+
+        <Button
+            android:id="@+id/psmafolder"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/folder"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            app:backgroundTint="@null"
+            android:layout_width="40dp" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

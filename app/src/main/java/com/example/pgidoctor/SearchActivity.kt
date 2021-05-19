@@ -1,9 +1,11 @@
 package com.example.pgidoctor
 
 import android.R.attr.button
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -16,6 +18,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_search_by_name.*
+import java.util.*
 
 
 class SearchActivity : AppCompatActivity() {
@@ -25,6 +28,7 @@ class SearchActivity : AppCompatActivity() {
     var list1: MutableList<PatientDetails> = mutableListOf()
     lateinit var search: Button
     lateinit var nameT: TextInputLayout
+    lateinit var datePicker: Button
     lateinit var  spinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +45,37 @@ class SearchActivity : AppCompatActivity() {
 
         searchmenu.setOnClickListener{
             showPopup(searchmenu)
+        }
+
+        datePicker = findViewById(R.id.pickDate)
+
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        nameT.isEnabled = false
+        var date = ""
+        datePicker.setOnClickListener {
+            var dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                // Display Selected date in TextView
+//                nameT.editText?.setText("" + dayOfMonth + " / " + (monthOfYear.toInt()+1).toString() + " / " + year)
+                var daynumber = ""
+                var monthnumber = (monthOfYear+1).toString()
+                var correctMonth = monthOfYear + 1
+                if (correctMonth < 10) {
+                    monthnumber = "0$correctMonth"
+                }
+                if (dayOfMonth < 10) {
+                    daynumber = "0$dayOfMonth"
+                    date = daynumber + "-" + monthnumber + "-" + year.toString()
+                    nameT.editText?.setText(date)
+                }
+                else {date = dayOfMonth.toString() + "-" + monthnumber + "-" + year.toString()
+                    nameT.editText?.setText(date)}
+            }, year, month, day)
+
+            dpd.show()
         }
 
         /*searchButton.setOnClickListener {
@@ -69,24 +104,33 @@ class SearchActivity : AppCompatActivity() {
         var unit = ""
         var hospital = ""
         spinner = findViewById(R.id.spinner)
-
         val fireStore = FirebaseFirestore.getInstance()
-        fireStore.collection("PatientDetails").get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    val det = document.toObject(PatientDetails::class.java)
-                    list.add(det)
+        auth.currentUser?.uid?.let {
+            fireStore.collection("Users").document(it).get()
+                .addOnSuccessListener { it ->
+                    if(it.exists()){
+                        hospital = it.getString("hospital").toString()
+                        unit = it.getString("unit").toString()
+
+                        fireStore.collection("PatientDetails").whereEqualTo("hospitalText",hospital).whereEqualTo("unitText",unit).get()
+                            .addOnSuccessListener { documents ->
+                                for (document in documents) {
+                                    val det = document.toObject(PatientDetails::class.java)
+                                    list.add(det)
+                                }
+                                (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+                                if (list.isEmpty()) {
+                                    Toast.makeText(
+                                        applicationContext,
+                                        "No Such Patient Exists",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                }
+                            }
+                        (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+                    }
                 }
-                (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
-                if (list.isEmpty()) {
-                    Toast.makeText(
-                        applicationContext,
-                        "No Such Patient Exists",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
-        (recyclerView.adapter as AssignedPatientsAdapter).notifyDataSetChanged()
+        }
     }
 
 
@@ -121,13 +165,16 @@ class SearchActivity : AppCompatActivity() {
                 R.id.header2 -> {
                     spinner.adapter = null
                     nameT.hint = "Enter Date to Search"
-                    nameT.isEnabled = true
-                    nameT.editText?.setText("")
+                    datePicker.visibility = View.VISIBLE
+//                    nameT.isEnabled = true
                     search.setOnClickListener {
                         list1.clear()
                         var nameentered = nameT.editText?.text.toString()
+                        Log.d("Daatee",nameentered)
+                        var datee = nameentered.substring(6,10) + nameentered.substring(3,5) + nameentered.substring(0,2)
+                        Log.d("Datee",datee)
                         for(item in list){
-                            if(item.date == nameentered){
+                            if(item.date == datee){
                                 list1.add(item)
                             }
                         }

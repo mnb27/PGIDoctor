@@ -1,18 +1,15 @@
 package com.example.pgidoctor
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Picasso
-import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_view_more_detail.*
 
 class ViewMoreDetailActivity : AppCompatActivity() {
@@ -67,54 +64,55 @@ class ViewMoreDetailActivity : AppCompatActivity() {
         showMRI.setOnClickListener(View.OnClickListener {
             val url = previousDetails?.mri.toString()
             if(url.isNotEmpty()) {
-                Picasso.with(this).load(url).into(loadImage)
+//                Picasso.with(this).load(url).into(loadImage)
+                startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(url)))
             }
             else {
                 Toast.makeText(this, "MRI Unavailable", Toast.LENGTH_LONG).show()
             }
-            clickMRI = if (clickMRI) {
-                loadImage.visibility = View.VISIBLE
-                false
-            } else {
-                loadImage.visibility = View.GONE
-                true
-            }
+//            clickMRI = if (clickMRI) {
+//                loadImage.visibility = View.VISIBLE
+//                false
+//            } else {
+//                loadImage.visibility = View.GONE
+//                true
+//            }
         })
 
-        var clickBonescan = true
+//        var clickBonescan = true
         showBonescan.setOnClickListener(View.OnClickListener {
             val url = previousDetails?.bonescan.toString()
             if(url.isNotEmpty()) {
-                Picasso.with(this).load(url).into(loadImage)
+                startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(url)))
             }
             else {
                 Toast.makeText(this, "BoneScan Unavailable", Toast.LENGTH_LONG).show()
             }
-            clickBonescan = if (clickBonescan) {
-                loadImage.visibility = View.VISIBLE
-                false
-            } else {
-                loadImage.visibility = View.GONE
-                true
-            }
+//            clickBonescan = if (clickBonescan) {
+//                loadImage.visibility = View.VISIBLE
+//                false
+//            } else {
+//                loadImage.visibility = View.GONE
+//                true
+//            }
         })
 
-        var clickPSMA = true
+//        var clickPSMA = true
         showPSMA.setOnClickListener(View.OnClickListener {
             val url = previousDetails?.psmapet.toString()
             if(url.isNotEmpty()) {
-                Picasso.with(this).load(url).into(loadImage)
+                startActivity(Intent(Intent.ACTION_VIEW,Uri.parse(url)))
             }
             else {
                 Toast.makeText(this, "PSMA PET Unavailable", Toast.LENGTH_LONG).show()
             }
-            clickPSMA = if (clickPSMA) {
-                loadImage.visibility = View.VISIBLE
-                false
-            } else {
-                loadImage.visibility = View.GONE
-                true
-            }
+//            clickPSMA = if (clickPSMA) {
+//                loadImage.visibility = View.VISIBLE
+//                false
+//            } else {
+//                loadImage.visibility = View.GONE
+//                true
+//            }
         })
 
 

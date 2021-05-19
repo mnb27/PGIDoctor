@@ -87,7 +87,7 @@
             <Button
                 android:id="@+id/whatsapp"
                 android:layout_height="50dp"
-                android:background="@drawable/whatsapp"
+                android:background="@drawable/whatsappp"
                 android:layout_margin="18dp"
                 android:textColor="#ffffff"
                 app:backgroundTint="@null"
