@@ -16,6 +16,11 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/templatemo-art-factory.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/owl-carousel.css">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <title>Blood Reports</title>
 </head>
 <style>
@@ -70,39 +75,93 @@
           <div class="card-body">
             <h5 class="card-title"><%=history.name%></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%=history.date%></h6>
-            <p class="card-text"></p> 
-            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">View Complete Details</button>           
+            <%
+            
+            var result = "";
+              var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+              var charactersLength = characters.length;
+              for ( var i = 0; i < charactersLength; i++ ) {
+                result+=(characters.charAt(Math.floor(Math.random() * charactersLength)));
+              }
+              
+            %>
+
+            <p><%= result %></p>
+
+            <button class="btn btn-outline-primary" data-toggle="collapse" data-target="#<%= result %>">View Complete Details</button>
+            <div id="<%= result %>" class="collapse">
+
+              <form id = "classroom_add_id">
+                <div class="mb-3">
+                  <label for="formGroupExampleInput" class="form-label">Hospital</label>
+                  <input readonly type="text" class="form-control" id="buildingname"
+                      value="<%=history.hospitalText %>" required>
+  
+                      <label for="formGroupExampleInput" class="form-label">Unit</label>
+                      <input readonly type="text" class="form-control" id="buildingname"
+                          value="<%=history.unitText %>" required>
+  
+                          <label for="formGroupExampleInput" class="form-label">Alcohole</label>
+                          <input readonly type="text" class="form-control" id="buildingname"
+                              value="<%=history.alcohole %>" required>
+  
+                              <label for="formGroupExampleInput" class="form-label">Comorbidities</label>
+                          <input readonly type="text" class="form-control" id="buildingname"
+                              value="<%=history.comorbidities %>" required>
+  
+                              <label for="formGroupExampleInput" class="form-label">Doctor Remarks</label>
+                          <input readonly type="text" class="form-control" id="buildingname"
+                              value="<%=history.doctorRemarks %>" required>
+  
+                              <label for="formGroupExampleInput" class="form-label">Family History</label>
+                          <input readonly type="text" class="form-control" id="buildingname"
+                              value="<%=history.familyho %>" required>
+  
+                              <label for="formGroupExampleInput" class="form-label">Height</label>
+                          <input readonly type="text" class="form-control" id="buildingname"
+                              value="<%=history.height %>" required>
+  
+                              <label for="formGroupExampleInput" class="form-label">Weight</label>
+                          <input readonly type="text" class="form-control" id="buildingname"
+                              value="<%=history.weight %>" required>
+  
+                              <label for="formGroupExampleInput" class="form-label">Medicines</label>
+                          <input readonly type="text" class="form-control" id="buildingname"
+                              value="<%=history.medicines %>" required>
+  
+                              <label for="formGroupExampleInput" class="form-label">Smoking H/O</label>
+                          <input readonly type="text" class="form-control" id="buildingname"
+                              value="<%=history.smoking %>" required>
+  
+                              <br>
+                              <% if(history.mri=="") { %>
+                              <a class="btn btn-success" href="#" target="_blank">MRI</a>
+                              <% } %>
+                              <% if(history.mri!="") { %>
+                                <a class="btn btn-success" href=<%=history.mri %> target="_blank">MRI</a>
+                                <% } %>
+  
+                                <% if(history.bonescan=="") { %>
+                                  <a class="btn btn-success" href="#" target="_blank">BoneScan</a>
+                                  <% } %>
+                                  <% if(history.bonescan!="") { %>
+                                    <a class="btn btn-success" href=<%=history.bonescan %> target="_blank">BoneScan</a>
+                                    <% } %>
+  
+  
+                                    <% if(history.psmapet=="") { %>
+                                      <a class="btn btn-success" href="#" target="_blank">PSMA</a>
+                                      <% } %>
+                                      <% if(history.psmapet!="") { %>
+                                        <a class="btn btn-success" href="<%=history.psmapet %>" target="_blank">PSMA</a>
+                                        <% } %>
+  
+                            </div>
+            </form>
+  
+              </div>
+  
           </div>
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <h4 class="modal-title id="exampleModalLabel" w-100 font-weight-bold">Complete Details</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </button>
-        </div>
-                <div style = "background: #c6dcfc; "class="modal-body">
-                    <form id = "classroom_add_id">
-                        <div class="mb-3">
-                            <label for="formGroupExampleInput" class="form-label">Hospital</label>
-                            <input readonly type="text" class="form-control" id="buildingname"
-                                value="<%=history.hospitalText %>" required>
-
-                                <label for="formGroupExampleInput" class="form-label">Unit</label>
-                                <input readonly type="text" class="form-control" id="buildingname"
-                                    value="<%=history.unitText %>" required>
-
-                                    <label for="formGroupExampleInput" class="form-label">Alcohole</label>
-                                    <input readonly type="text" class="form-control" id="buildingname"
-                                        value="<%=history.alcohole %>" required>
-                        </div>
-                    </form>
-                </div>
-                
-            </div>
-        </div>
-    </div>
     </div>
     <% } %>
   </div>

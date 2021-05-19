@@ -337,21 +337,46 @@ app.get('/search', (req,res) => {
 })
 
 app.get('/searchedUser',async (req,res) => {
+    const sessionCookie= req.cookies.session;
     var url = require('url')
     var url_parts = url.parse(req.url,true)
     
+    const userDetail = await firestore.collection('Users');
+    const data1 = await userDetail.get();
+
     var query = url_parts.query
     var name = query.name
     const users = await firestore.collection('PatientDetails');
     const data = await users.get();
     const userArray = [];
+
+    var hospitalText=""
+    var unitText = ""
+        //console.log(token);
+        // idToken comes from the client app
+        admin.auth().verifySessionCookie(
+            sessionCookie, true /** checkRevoked */)
+            .then((decodedClaims) => {
+                //console.log(decodedClaims);
+
+                email = decodedClaims.email
+                data1.forEach(doc => {
+            if(email == doc.data().email){
+                hospitalText = doc.data().hospital
+                unitText = doc.data().unit
+                
+            }
+            
+
+        })
+
     if(data.empty) {
         res.status(404).send('No student record found');
     }else {
         data.forEach(doc => {
             var datee = doc.data().date
             var bookdate = datee.substring(6,8) + "-" + datee.substring(4,6) + "-" + datee.substring(0,4)
-            if(doc.data().name.includes(name)){
+            if(doc.data().hospitalText == hospitalText && doc.data().unitText == unitText && doc.data().name.includes(name)){
                 const user = new PatientDetails(
                     doc.data().age,
                     doc.data().crno,
@@ -375,6 +400,75 @@ app.get('/searchedUser',async (req,res) => {
         });
         res.render("../views/users.ejs",{userArray})
     }
+    })
+
+  })
+
+  app.get('/serachCR',async (req,res) => {
+    const sessionCookie= req.cookies.session;
+    var url = require('url')
+    var url_parts = url.parse(req.url,true)
+    
+    const userDetail = await firestore.collection('Users');
+    const data1 = await userDetail.get();
+    
+    var query = url_parts.query
+    var name = query.name
+    const users = await firestore.collection('PatientDetails');
+    const data = await users.get();
+    const userArray = [];
+
+    var hospitalText=""
+    var unitText = ""
+        //console.log(token);
+        // idToken comes from the client app
+        admin.auth().verifySessionCookie(
+            sessionCookie, true /** checkRevoked */)
+            .then((decodedClaims) => {
+                //console.log(decodedClaims);
+
+                email = decodedClaims.email
+                data1.forEach(doc => {
+            if(email == doc.data().email){
+                hospitalText = doc.data().hospital
+                unitText = doc.data().unit
+                
+            }
+            
+
+        })
+
+    if(data.empty) {
+        res.status(404).send('No student record found');
+    }else {
+        data.forEach(doc => {
+            var datee = doc.data().date
+            var bookdate = datee.substring(6,8) + "-" + datee.substring(4,6) + "-" + datee.substring(0,4)
+            if(doc.data().hospitalText == hospitalText && doc.data().unitText == unitText && doc.data().crno.includes(name)){
+                const user = new PatientDetails(
+                    doc.data().age,
+                    doc.data().crno,
+                    bookdate,
+                    doc.data().email,
+                    doc.data().fathername,
+                    doc.data().gender,
+                    doc.data().hospitalText,
+                    doc.data().id,
+                    doc.data().isImportant,
+                    doc.data().isSevere,
+                    doc.data().isStarred,
+                    doc.data().isNearby,
+                    doc.data().mobile,
+                    doc.data().name,
+                    doc.data().profileImageUrl,
+                    doc.data().unitText
+                );
+                userArray.push(user);
+            }    
+        });
+        res.render("../views/users.ejs",{userArray})
+    }
+    })
 
   })
 
