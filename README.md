@@ -37,7 +37,11 @@ An app to manage patient prostate diagnosis records. Main users of the app are t
 - Download released apk from [here](https://github.com/mnb27/PGIDoctor/releases/download/APP/PGIDoctor.apk)
 - Now install apk on an android device. Best supported with android version >= 4.1 JellyBean
 
+
 #### 2.1.2 How to build app locally
+
+System Requirements - [Install](https://developer.android.com/studio/install) Android Studio 
+
 - Clone repository
 - Open project in android studio
 - Sync and build gradle
@@ -49,6 +53,9 @@ An app to manage patient prostate diagnosis records. Main users of the app are t
 - Best supported with Google Chrome browser
 
 #### 2.1.2 How to run locally
+
+System Requirements - Install [NodeJS](https://nodejs.org/en/)
+
 - Clone repository
 - Open `admin_dep` in code editor
 - On terminal
